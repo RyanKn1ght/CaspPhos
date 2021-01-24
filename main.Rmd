@@ -4,7 +4,9 @@ author: "Ryan Knight"
 date: "24/01/2021"
 output: 
   bookdown::html_document2:
+    fig_caption: yes
     css: "style.css"
+bibliography: references.bib
 ---
 
 <!-- Configuration of default code chunk options -->
@@ -18,29 +20,38 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r packages}
 library(tidyverse)
+library(citr)
 ```
 
+# Introduction
 
-# Heading
+**Caspases** (**c**ysteine **asp**art**ases**), are a family of proteases that carry out essential roles in forms of programmed cell death. 
 
-## Subheading
+Cellular stress and infection promote the assembly of inflammasome complexes, leading to the activation of inflammatory caspases. Activation of these inflammatory caspases, Caspase-1, Caspase-4 and Caspase-5 in humans, and Caspase-1 and Caspase-11 in mice, induces a morphologically distinct form of programmed cell death known as pyroptosis. When undergoing pyroptosis, cells rupture and release their contents, including pro-inflammatory cytokines and danger signals to both prevent intracellular pathogen replication and induce an immune response.
 
-### Sub sub heading
+Despite their namesake, there exists substantiative evidence that caspases do not exclusively cleave substrates at aspartate residues but have a propensity to act at a variety of other amino acid residues [@seaman_2016], most notably glutamate, posessing similar acidic properties to aspartate.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+For our previous work (unpublished data), we compiled a database of inflammatory caspase substrates. As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Materials and Methods
 
-```{r cars}
-summary(cars)
-```
+##Phosphate site analysis
 
-## Including Plots
+The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
 
-You can also embed plots, for example:
+Data was tidied into an amenable format for analysis with two forms of phosphate site prediction software, DeepPhos [@luo_2019]
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Results
+
+
+
+
+
+
+
+
+
+
+# References
+
