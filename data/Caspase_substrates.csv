@@ -1,0 +1,167 @@
+﻿,,Substrate (Recommended) Name ,Uniprot ID,Hyperlink,Species,Human,Ape (PANTR),Mouse,Zebrafish (DANRE),Cleaved by,P10,P9,P8,P7,P6,P5,P4,P3,P2,P1 (a.a. #),P1,amino acid,P1',P2',P3',P4',P5',P6',P7',P8',P9',P10',Concatenated P10-P10' Sequence,Publication/Resource used,Method,Comments
+,,40S ribosomal protein S7,P62081,P62081,H,X,X,X,X,1,T,A,V,H,D,A,I,L,E,D (132),D,132,L,V,F,P,S,E,I,V,G,K,TAVHDAILEDLVFPSEIVGK,"Agard, MCP2010","Recombinant caspase, LPS/ATP",
+,,"60kDa heat shock protein, mitochondrial",P10809,P10809,H,X,X,X,X,1,M,L,Q,G,V,D,L,L,A,D (49),D,49,A,V,A,V,T,M,G,P,K,G,MLQGVDLLADAVAVTMGPKG,"Agard, MCP2010",Recombinant caspase,
+,,"60kDa heat shock protein, mitochondrial",P63038,P63038,M,X,X,X,X,1,M,L,Q,G,V,D,L,L,A,D (49),D,49,A,V,A,V,T,M,G,P,K,G,MLQGVDLLADAVAVTMGPKG,"Lamkanfi,MCP2008",Recombinant caspase,
+,,"60kDa heat shock protein, mitochondrial",P63038,P63038,M,X,X,X,X,1,K,N,I,G,A,K,L,V,Q,D (100),D,100,V,A,N,N,T,N,E,E,A,G,KNIGAKLVQDVANNTNEEAG,"Lamkanfi,MCP2008",Recombinant caspase,
+,,60S ribosomal protein L17,P18621,P18621,H,X,/,X,?,1,N,A,E,L,K,G,L,D,V,D (110),D,110,S,L,V,I,E,H,I,Q,V,N,NAELKGLDVDSLVIEHIQVN,"Agard, MCP2010",Recombinant caspase,
+,,60S ribosomal protein L27,P61353,P61353,H,X,X,X,X,1,P,L,D,K,T,V,V,N,K,D (99),D,99,V,F,R,D,P,A,L,K,R,K,PLDKTVVNKDVFRDPALKRK,"Agard, MCP2010",Recombinant caspase,
+,,60S ribosomal protein L4,P36578,P36578,H,X,X,X,X,1,A,V,F,K,A,P,I,R,P,D (35),D,35,I,V,N,F,V,H,T,N,L,R,AVFKAPIRPDIVNFVHTNLR,"Agard, MCP2010",Recombinant caspase,
+,,Actin-related protein 2/3 complex subunit 5,O15511,O15511,H,X,X,X,X,1,D,E,N,K,V,F,D,E,E,D (29),D,29,G,G,D,G,Q,A,G,P,D,E,DENKVFDEEDGGDGQAGPDE,"Agard, MCP2010",MSU,
+,,"Actin, cytoplasmic 1",P60709,P60709,H,X,X,X,X,1,D,D,D,I,A,A,L,V,V,D (11),D,11,N,G,S,G,M,C,K,A,G,F,DDDIAALVVDNGSGMCKAGF,"Agard, MCP2010",Recombinant caspase,Both ActB1 and ActB2 forms conserved in DANRE.
+,,"Actin, cytoplasmic 1",P60709,P60709,H,X,X,X,X,1,T,T,G,I,V,M,D,S,G,D (157),D,157,G,V,T,H,T,V,P,I,Y,E,TTGIVMDSGDGVTHTVPIYE,"Agard, MCP2010","MSU, DNA/CM",
+,,"Actin, cytoplasmic 1",P60709,P60709,H,X,X,X,X,4,G,V,M,V,G,M,G,Q,K,D (51),D,51,S,Y,V,G,D,E,A,Q,S,K,GVMVGMGQKDSYVGDEAQSK,"Agard, MCP2010",Recombinant caspase,
+,,"Actin, cytoplasmic 1",P60710,P60710,M,X,X,X,X,1,D,D,D,I,A,A,L,V,V,D (11),D,11,N,G,S,G,M,C,K,A,G,F,DDDIAALVVDNGSGMCKAGF,"Lamkanfi,MCP2008",Recombinant caspase,Conserved in DANRE's ActB1 and ActB2 genes. I think these are actin 1 and actin 2 homologues respectively. Sites very similar anyway
+,,"Actin, cytoplasmic 1",P60710,P60710,M,X,X,X,X,1,S,L,E,K,S,Y,E,L,P,D (244),D,244,G,Q,V,I,T,I,G,N,E,R,SLEKSYELPDGQVITIGNER,"Lamkanfi,MCP2008",Recombinant caspase,
+,,"Actin, cytoplasmic 2",P63260,P63260,M,X,X,X,X,1,E,E,E,I,A,A,L,V,I,D (11),D,11,N,G,S,G,M,C,K,A,G,F,EEEIAALVIDNGSGMCKAGF,"Lamkanfi,MCP2008",Recombinant caspase,
+,,"Actin, cytoplasmic 2",P63260,P63260,M,X,X,X,X,1,S,L,E,K,S,Y,E,L,P,D (244),D,244,G,Q,V,I,T,I,G,N,E,R,SLEKSYELPDGQVITIGNER,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Activating signal cointegrator 1 complex subunit 2,Q91WR3,Q91WR3,M,X,X,X,X,1,Y,E,D,E,Y,D,D,T,Y,D (614),D,614,G,N,Q,V,G,A,N,D,A,D,YEDEYDDTYDGNQVGANDAD,"Lamkanfi,MCP2008",Recombinant caspase,
+,,ADP-ribosylation factor GTPase-activating protein 2,Q8N6H7,Q8N6H7,H,X,X,X,?,1,E,S,F,G,S,R,W,D,T,D (376),D,376,A,A,W,G,M,D,R,V,E,E,ESFGSRWDTDAAWGMDRVEE,"Agard, MCP2010",Recombinant caspase,
+,,ADP-ribosylation factor GTPase-activating protein 2,Q8N6H7,Q8N6H7,H,X,X,X,?,1,W,D,T,D,A,A,W,G,M,D (382),D,382,R,V,E,E,K,E,P,E,V,T,WDTDAAWGMDRVEEKEPEVT,"Agard, MCP2010",Recombinant caspase,"DANRE D->E, may still function."
+,,ADP-sugar pyrophosphatase,Q9JKX6,Q9JKX6,M,X,X,X,?,1,R,P,P,M,G,S,Y,C,L,E (92),E,92,F,P,A,G,F,I,E,D,G,E,RPPMGSYCLEFPAGFIEDGE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Amyloid beta A4 precursor protein-binding family B member 1-interacting protein,Q8R5A3,Q8R5A3,M,X,X,X,X,1,D,Q,D,L,D,A,L,M,A,D (70),D,70,L,V,A,D,I,S,E,A,E,Q,DQDLDALMADLVADISEAEQ,"Lamkanfi,MCP2008",Recombinant caspase,
+,,ARF GTPase-activating protein GIT2,Q14161,Q14161,H,X,X,X,?,1,V,W,P,G,D,G,L,V,P,D (625),D,625,T,A,E,P,H,V,A,P,S,P,VWPGDGLVPDTAEPHVAPSP,"Agard, MCP2010",Recombinant caspase,"Possibly conserved in DANRE, D->E"
+,,ARF GTPase-activating protein GIT2,Q9JLQ2,Q9JLQ2,M,X,X,X,X,1,T,E,S,Q,D,N,D,Q,P,D (390),D,390,Y,D,S,V,A,S,D,E,D,T,TESQDNDQPDYDSVASDEDT,"Lamkanfi,MCP2008",Recombinant caspase,Conserved in DANRE Git2a/b
+,,Ataxin-2,Q99700,Q99700,H,X,X,X,X,4,E,N,Y,G,V,V,S,T,Y,D (416),D,416,S,S,L ,S,S,Y,T,V,P,L,ENYGVVSTYDSSL SSYTVPL,"Agard, MCP2010",Recombinant caspase,"Agard says P1'-P4' is SLSS, it's SSLS."
+,,Ataxin-3,P54252,P54252,H,X,X,X,/,1,A,L,A,L,S,R,Q,E,I,D (241),D,241,M,E,D,E,E,A,D,L,R,R,ALALSRQEIDMEDEEADLRR,"Berke, JNeurochem2004",Recombinant caspase,
+,,Ataxin-3,P54252,P54252,H,X,X,X,?,1,L,S,R,Q,E,I,D,M,E,D (244),D,244,E,E,A,D,L,R,R,A,I,Q,LSRQEIDMEDEEADLRRAIQ,"Berke, JNeurochem2004",Recombinant caspase,
+,,Ataxin-3,P54252,P54252,H,X,X,X,X,1,E,I,D,M,E,D,E,E,A,D (248),D,248,L,R,R,A,I,Q,L,S,M,Q,EIDMEDEEADLRRAIQLSMQ,"Berke, JNeurochem2004",Recombinant caspase,
+,,Brain acid soluble protein 1,P80723,P80723,H,X,X,/,?,1,A,P,A,A,Q,E,T,K,S,D (165),D,165,G,A,P,A,S,D,S,K,P,G,APAAQETKSDGAPASDSKPG,"Agard, MCP2010","Recombinant caspase, LPS/ATP, DNA/CM",
+,,C-C motif chemokine 3,P10147,P10147,H,X,X,X,?,1,R,Q,I,P,Q,N,F,I,A,D (49),D,49,Y,F,E,T,S,S,Q,C,S,K,RQIPQNFIADYFETSSQCSK,"Agard, MCP2010",Recombinant caspase,Can't find the CCL3 danre/zebrafish gene on uniprot.
+,,Calpastatin,P20810,P20810,H,X,X,X,?,1,P,P,M,S,E,D,F,L,L,D (513),D,513,A,L,S,E,D,F,S,G,P,Q,PPMSEDFLLDALSEDFSGPQ,"Agard, MCP2010",Recombinant caspase,
+,,Calpastatin,P20810,P20810,H,X,X,X,X,1,D,D,A,I,D,A,L,S,S,D (238),D,238,F,T,C,G,S,P,T,A,A,G,DDAIDALSSDFTCGSPTAAG,"Wang, ABB1998",Recombinant caspase,
+,,Calpastatin,P20810,P20810,H,X,X,X,/,1,K,S,G,M,D,A,A,L,D,D (159),D,159,L,I,D,T,L,G,G,P,E,E,KSGMDAALDDLIDTLGGPEE,"Wang, ABB1998",Recombinant caspase,
+,,Calpastatin,P20810,P20810,H,X,X,?,?,1,P,D,D,A,V,E,A,L,A,D (439),D,439,S,L,G,K,K,E,A,D,P,E,PDDAVEALADSLGKKEADPE,"Wang, ABB1998",Recombinant caspase,
+,,Calumenin,O43852,O43852,H,X,X,X,X,1,F,I,D,L,E,E,Y,I,G,D (216),D,216,M,Y,S,H,D,G,N,T,D,E,FIDLEEYIGDMYSHDGNTDE,"Agard, MCP2010",Recombinant caspase,DANRE CALUA and CALUB both conserve.
+,,Caprin-1,Q14444,Q14444,H,X,X,X,?,1,P,R,D,Y,S,G,Y,Q,R,D (668),D,668,G,Y,Q,Q,N,F,K,R,G,S,PRDYSGYQRDGYQQNFKRGS,"Agard, MCP2010",Recombinant caspase,DANRE Caprin1a and Caprin1b conserve. D->E in Caprin1a only.
+,,CapZ-interacting protein,Q6JBY9,Q6JBY9,H,X,X,/,?,1,K,A,R,R,S,S,E,E,V,D (272),D,272,G,Q,H,P,A,Q,E,E,V,P,KARRSSEEVDGQHPAQEEVP,"Agard, MCP2010",DNA/CM,Can't find DANRE gene on uniprot
+,,Caspase-1,P29466,P29466,H,X,X,X,X,1,D,S,P,G,V,V,W,F,K,D (297),D,297,S,V,G,V,S,G,N,L,S,L,DSPGVVWFKDSVGVSGNLSL,"Agard, MCP2010","Recombinant caspase, DNA/CM",DANRE CaspaseA and CaspaseB may conserve.
+,,Caspase-1,P29466,P29466,H,X,X,/,/,1,S,F,P,A,P,Q,A,V,Q,D (119),D,119,N,P,A,M,P,T,S,S,G,S,SFPAPQAVQDNPAMPTSSGS,"Agard, MCP2010",Recombinant caspase,DANRE CaspaseA and CaspaseB don't conserve.
+,,Caspase-3 ,P70677,P70677,M,X,X,X,?,11,T,E,L,D,C,G,I,E,T,D (175),D,175,S,G,T,D,E,E,M,A,C,Q,TELDCGIETDSGTDEEMACQ,"Kang,JCB2000",Recombinant caspase,
+,,Caspase-3 ,P42574,P42574,H,X,X,X,?,4,C,E,L,D,C,G,I,E,T,D (175),D,175,S,G,V,D,D,D,M,A,C,H,CELDCGIETDSGVDDDMACH,"Kamada,Oncogene1997",Recombinant caspase,
+,,Caspase-7,P97864,P97864,M,X,X,X,X,1,T,E,L,D,D,G,I,Q,A,D (198),D,198,S,G,P,I,N,D,I,D,A,N,TELDDGIQADSGPINDIDAN,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Caspase-9,P55211,P55211,H,X,X,X,?,4,E,S,P,G,S,N,P,E,P,D (315),D,315,A,T,P,F,Q,E,G,L,R,T,ESPGSNPEPDATPFQEGLRT,"Yamamuro,JPharmacolSci2011",ER Stress,
+,,Chloride channel CLIC-like protein 1,Q96S66,Q96S66,H,X,X,/,/,1,R,Q,E,E,I,D,Y,R,P,D (390),D,390,G,G,A,G,D,A,D,F,H,Y,RQEEIDYRPDGGAGDADFHY,"Agard, MCP2010",Recombinant caspase,
+,,Clathrin light chain A,P09496,P09496,H,X,X,X,/,1,E,P,P,G,G,P,D,A,V,D (76),D,76,G,V,M,N,G,E,Y,Y,Q,E,EPPGGPDAVDGVMNGEYYQE,"Agard, MCP2010",Recombinant caspase,
+,,Cyclin-G-associated kinase,Q99KY4,Q99KY4,M,?,?,X,/,1,K,E,S,Q,S,V,L,I,A,D (820),D,820,G,D,G,S,E,V,S,D,E,E,KESQSVLIADGDGSEVSDEE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Cytoplasmic protein NCK1,P16333,P16333,H,X,X,X,?,1,K,V,K,R,K,P,S,V,P,D (88),D,88,S,A,S,P,A,D,D,S,F,V,KVKRKPSVPDSASPADDSFV,"Agard, MCP2010",MSU,"DANRE D->E, may still function."
+,,Cytosolic phospholipase A2,P47713,P47713,M,X,X,X,X,1,S,Q,D,S,F,D,D,E,L,D (521),D,521,A,A,V,A,D,P,D,E,F,E,SQDSFDDELDAAVADPDEFE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Dedicator of cytokinesis protein 5,Q9H7D0,Q9H7D0,H,X,X,X,/,1,T,L,S,S,P,S,L,Q,T,D (1809),D,1809,G,I,A,A,T,P,V,P,P,P,TLSSPSLQTDGIAATPVPPP,"Agard, MCP2010",Recombinant caspase,D->E in DANRE
+,,Deubiquitinating protein VCIP135,Q96JH7,Q96JH7,H,X,X,X,/,1,T,E,T,T,D,G,C,V,A,D (1181),D,1181,A,L,G,A,A,F,A,T,R,S,TETTDGCVADALGAAFATRS,"Agard, MCP2010",Recombinant caspase,
+,,DNA replication licensing factor MCM2,P97310,P97310,M,X,X,X,X,1,I,P,E,L,D,V,Y,E,A,E (93),E,93,G,L,A,L,D,D,E,D,V,E,IPELDVYEAEGLALDDEDVE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,DNA replication licensing factor MCM3,P25206,P25206,M,X,X,X,X,1,G,S,S,V,D,I,L,A,T,D (530),D,530,D,P,D,F,T,Q,D,D,Q,Q,GSSVDILATDDPDFTQDDQQ,"Lamkanfi,MCP2008",Recombinant caspase,D->E in DANRE
+,,DNA replication licensing factor MCM3,P25206,P25206,M,X,X,X,X,1,V,D,I,L,A,T,D,D,P,D (533),D,533,F,T,Q,D,D,Q,Q,D,T,R,VDILATDDPDFTQDDQQDTR,"Lamkanfi,MCP2008",Recombinant caspase,
+,,DNA replication licensing factor MCM4,P33991,P33991,H,X,X,X,?,1,K,G,L,Q,V,D,L,Q,S,D (132),D,132,G,A,A,A,E,D,I,V,A,S,KGLQVDLQSDGAAAEDIVAS,"Agard, MCP2010",Recombinant caspase,"Possibly conserved in DANRE, D->E"
+,,DNA replication licensing factor MCM5,P33992,P33992,H,X,X,X,X,1,F,D,D,P,G,I,F,Y,S,D (13),D,13,S,F,G,G,D,A,Q,A,D,E,FDDPGIFYSDSFGGDAQADE,"Agard, MCP2010",Recombinant caspase,
+,,E3 ubiquitin-protein ligase HUWE1,Q7TMY8,Q7TMY8,M,X,X,X,X,1,D,E,S,Q,E,D,V,L,M,D (2384),D,2384,E,A,P,S,N,L,S,Q,A,S,DESQEDVLMDEAPSNLSQAS,"Lamkanfi,MCP2008",Recombinant caspase,
+,,EH domain-containing protein 4,Q9H223,Q9H223,H,X,X,X,X,1,I,W,K,L,A,D,C,D,C,D (496),D,496,G,M,L,D,E,E,E,F,A,L,IWKLADCDCDGMLDEEEFAL,"Agard, MCP2010", Recombinant caspase,
+,,Elongation factor 1-alpha 1,P68104,P68104,H,X,X,X,X,1,I,S,A,G,Y,A,P,V,L,D (362),D,362,C,H,T,A,H,I,A,C,K,F,ISAGYAPVLDCHTAHIACKF,"Agard, MCP2010",Recombinant caspase,
+,,Elongation factor 1-alpha 1,P68104,P68104,H,X,X,X,?,1,L,K,S,G,D,A,A,I,V,D (403),D,403,M,V,P,G,K,P,M,C,V,E,LKSGDAAIVDMVPGKPMCVE,"Agard, MCP2010",Recombinant caspase,"DANRE D->E, may still function."
+,,Endoplasmin,P14625,P14625,H,X,X,X,X,1,V,R,A,D,D,E,V,D,V,D (28),D,28,G,T,V,E,E,D,L,G,K,S,VRADDEVDVDGTVEEDLGKS,"Agard, MCP2010",MSU,
+,,Endoplasmin,P08113,P08113,M,X,X,X,X,1,G,F,V,R,A,D,D,E,V,D (26),D,26,V,D,G,T,V,E,E,D,L,G,GFVRADDEVDVDGTVEEDLG,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Eukaryotic translation initiation factor 2D,Q61211,Q61211,M,X,X,X,?,1,S,R,A,P,S,Q,D,S,L,D (243),D,243,G,K,P,L,Q,E,Q,M,D,D,SRAPSQDSLDGKPLQEQMDD,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Eukaryotic translation initiation factor 3 subunit J,O75822,O75822,H,X,X,X,X,1,A,G,D,S,D,S,W,D,A,D (17),D,17,A,F,S,V,E,D,P,V,R,K,AGDSDSWDADAFSVEDPVRK,"Agard, MCP2010","Recombinant caspase, MSU, LPS/ATP, DNA(Lys), DNA/CM",
+,,Eukaryotic translation initiation factor 4H,Q9WUK2,Q9WUK2,M,X,X,X,?,1,F,C,Y,V,E,F,D,E,V,D (93) ,D,93,S,L,K,E,A,L,T,Y,D,G,FCYVEFDEVDSLKEALTYDG,"Lamkanfi,MCP2008",Recombinant caspase,"Lamkanfi says site is 92, it's 93. DANRE D->E, may still function"
+,,Exosome RNA helicase MTR4,P42285,P42285,H,X,X,X,X,1,T,F,A,H,I,C,K,M,T,D (987),D,987,V,F,E,G,S,I,I,R,C,M,TFAHICKMTDVFEGSIIRCM,"Agard, MCP2010",Recombinant caspase,
+,,Far upstream-element binding protein 2,Q92945,Q92945,H,X,X,X,?,1,E,S,K,K,L,A,S,Q,G,D (128),D,128,S,I,S,S,Q,L,G,P,I,H,ESKKLASQGDSISSQLGPIH,"Agard, MCP2010",Recombinant caspase,
+,,Fermitin family homolog 3,Q86UX7,Q86UX7,H,X,X,X,X,1,E,G,S,A,P,T,D,V,L,D (344),D,344,S,L,T,T,I,P,E,L,K,D,EGSAPTDVLDSLTTIPELKD,"Agard, MCP2010","Recombinant caspase, LPS/ATP, DNA(Lys), DNA/CM",
+,,FYN-binding protein 1,O35601,O35601,M,X,X,X,/,1,E,N,Q,D,G,V,M,H,S,D (434),D,434,G,T,G,N,L,E,E,E,Q,E,ENQDGVMHSDGTGNLEEEQE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,G patch domain-containing protein 11,Q8N954,Q8N954,H,X,X,X,X,1,M,A,E,E,E,D,Y,M,S,D (36),D,36,S,F,I,N,V,Q,E,D,I,R,MAEEEDYMSDSFINVQEDIR,"Agard, MCP2010",Recombinant caspase,Agard says this site is 14-15. It is actually at 36.
+,,Gasdermin-D,P57764,P57764,H,X,X,X,/,1,M,R,C,L,H,N,F,L,T,D (275),D,275,G,V,P,A,E,G,A,F,T,E,MRCLHNFLTDGVPAEGAFTE,"Agard, MCP2010","Recombinant caspase, MSU, LPS/ATP, DNA(Lys), DNA/CM","I couldn't find a zebrafish gasdermin D, but I think gsdmed is the equivalent. The site appears to be  missing anyway though."
+,,Gasdermin-D,P57764,P57764,H,X,X,X,/,4,M,R,C,L,H,N,F,l,T,D (275),D,275,G,V,P,A,E,G,A,F,T,E,MRCLHNFlTDGVPAEGAFTE,"Shi,Nature2015",Recombinant caspase,
+,,Gasdermin-D,P57764,P57764,H,X,X,?,/,5,M,R,C,L,H,N,F,L,T,D (275),D,275,G,V,P,A,E,G,A,F,T,E,MRCLHNFLTDGVPAEGAFTE,"Shi,Nature2015",Recombinant caspase,
+,,Gelosolin,P06396,P06396,H,X,X,X,/,1,K,N,W,R,D,P,D,Q,T,D (403),D,403,G,L,G,L,S,Y,L,S,S,H,KNWRDPDQTDGLGLSYLSSH,"Agard, MCP2010","Recombinant caspase, DNA (Lys), DNA/CM",
+,,Heterogeneous nuclear ribonucleoprotein F,P52597,P52597,H,X,X,X,?,1,G,Y,E,E,Y,S,G,L,S,D (251),D,251,G,Y,G,F,T,T,D,L,F,G,GYEEYSGLSDGYGFTTDLFG,"Agard, MCP2010",Recombinant caspase,Can't find DANRE gene on uniprot
+,,Heterogeneous nuclear ribonucleoprotein H,P31943,P31943,H,X,X,X,/,1,Y,D,D,Y,N,G,G,Y,N,D (251),D,251,G,Y,G,F,G,S,D,R,F,G,YDDYNGGYNDGYGFGSDRFG,"Agard, MCP2010",Recombinant caspase,
+,,Heterogeneous nuclear ribonucleoprotein K,P61978,P61978,H,X,X,X,/,1,A,T,S,Q,L,P,L,E,S,D (128),D,128,A,V,E,C,L,N,Y,Q,H,Y,ATSQLPLESDAVECLNYQHY,"Agard, MCP2010","Recombinant caspase, MSU",Region deleted in DANRE
+,,Heterogeneous nuclear ribonucleoprotein L-like,Q8WVV9,Q8WVV9,H,X,X,X,?,1,G,E,H,P,S,S,F,R,H,D (289),D,289,G,Y,G,S,H,G,P,L,L,P,GEHPSSFRHDGYGSHGPLLP,"Agard, MCP2010",Recombinant caspase,Can't find the HNRNPLL in zebrafish
+,,Heterogeneous nuclear ribonucleoproteins A2/B1,P22626,P22626,H,X,X,X,?,1,V,T,F,S,S,M,A,E,V,D (76),D,76,A,A,M,A,A,R,P,H,S,I,VTFSSMAEVDAAMAARPHSI,"Agard, MCP2010",MSU,Can't find DANRE gene on uniprot
+,,HIV Tat-specific factor 1,O43719,O43719,H,X,X,X,?,1,Y,Q,A,N,Y,G,F,S,N,D (80),D,80,G,A,S,S,S,T,A,N,V,E,YQANYGFSNDGASSSTANVE,"Agard, MCP2010",Recombinant caspase,F1QUB8_DANRE  D -> E which might still work.
+,,HIV Tat-specific factor 1,O43719,O43719,H,X,X,/,/,1,T,Q,T,D,A,G,G,E,P,D (39),D,39,S,L,G,Q,Q,P,T,D,T,P,TQTDAGGEPDSLGQQPTDTP,"Agard, MCP2010",Recombinant caspase,
+,,Interleukin-1 beta,P01584,P01584,H,X,X,X,?,1,N,E,D,D,L,F,F,E,A,D (27),D,27,G,P,K,Q,M,K,C,S,F,Q,NEDDLFFEADGPKQMKCSFQ,"Agard, MCP2010 Kamens,JBiolChem1995",Recombinant caspase,
+,,Interleukin-1 beta,P01584,P01584,H,X,X,X,X,1,T,W,D,N,E,A,Y,V,H,D (116),D,116,A,P,V,R,S,L,N,C,T,R,TWDNEAYVHDAPVRSLNCTR,"Agard, MCP2010 Kamens,JBiolChem1995",Recombinant caspase,
+,,Interleukin-1 beta,P01584,P01584,H,X,X,X,/,1,Q,M,K,C,S,F,Q,D,L,D (40),D,40,L,C,P,L,D,G,G,I,Q,L,QMKCSFQDLDLCPLDGGIQL,"Agard, MCP2010",DNA/CM,transition site?
+,,Interleukin-18,Q14116,Q14116,H,X,X,X,/,4,A,E,D,D,E,N,L,E,S,D (36),D,36,Y,F,G,K,L,E,S,K,L,S,AEDDENLESDYFGKLESKLS,"Gaggero,Oncogene2004",Recombinant caspase,
+,,Inverted formin-2,Q27J81,Q27J81,H,X,X,X,?,1,L,L,G,V,L,Q,A,E,A,D (1146),D,1146,S,T,S,E,G,L,E,D,A,V,LLGVLQAEADSTSEGLEDAV,"Agard, MCP2010",Recombinant caspase,Can't find DANRE gene on uniprot
+,,"Isoleucine--tRNA ligase, cytoplasmic",P41252,P41252,H,X,/,X,X,1,D,E,T,E,I,Q,N,Q,T,D (1147),D,1147,L,L,S,L,S,G,K,T,L,C,DETEIQNQTDLLSLSGKTLC,"Agard, MCP2010",LPS/ATP,Agard says this site is 1147-1148. It is 1143-1144.
+,,"KH domain-containing, RNA-binding, signal transduction-associated protein 1",Q07666,Q07666,H,X,X,X,/,1,L,L,P,P,S,A,T,G,P,D (75),D,75,A,T,V,G,G,P,A,P,T,P,LLPPSATGPDATVGGPAPTP,"Agard, MCP2010",MSU,
+,,Leucine-rich repeat-containing protein 47,Q8N1G4,Q8N1G4,H,X,X,X,/,1,E,G,S,L,S,D,T,E,A,D (525),D,525,A,V,S,G,Q,L,P,D,P,T,EGSLSDTEADAVSGQLPDPT,"Agard, MCP2010","Recombinant caspase, MSU",
+,,LIM domain-containing protein 1,Q9UGP4,Q9UGP4,H,X,X,X,/,1,K,E,G,P,L,G,W,S,S,D (411),D,411,G,S,L ,G,S,V,L,L,D,S,KEGPLGWSSDGSL GSVLLDS,"Agard, MCP2010",Recombinant caspase,Appears to have large deletion in DANRE
+,,Long-chain-fatty-acid--CoA ligase 4,O60488,O60488,H,X,X,X,X,1,T,G,D,I,G,E,F,H,P,D (562),D,562,G,C,L ,Q,I,I,D,R,K,K,TGDIGEFHPDGCL QIIDRKK,"Agard, MCP2010",Recombinant caspase,
+,,MARCKS-related protein,P49006,P49006,H,X,X,X,?,1,T,D,E,A,A,G,A,T,G,D (63),D,63,A,I,E,P,A,P,P,S,Q,G,TDEAAGATGDAIEPAPPSQG,"Agard, MCP2010",MSU,Possibly conserved in both MARCKSL1a/b forms in DANRE
+,,Matrin-3,P43243,P43243,H,X,/,X,?,1,W,E,E,K,R,H,F,R,R,D (187),D,187,S,F,D,D,R,G,P,S,L,N,WEEKRHFRRDSFDDRGPSLN,"Agard, MCP2010",Recombinant caspase,Danre's MATR3-like conserves the D and some nearby residues.
+,,Mitochondrial antiviral-signaling protein,Q7Z434,Q7Z434,H,X,X,X,/,1,K,P,G,V,L,A,S,Q,V,D (429),D,429,S,P,F,S,G,C,F,E,D,L,KPGVLASQVDSPFSGCFEDL,"Yu, JV2010",Recombinant caspase,
+,,Neuron navigator 3,Q8IVL0,Q8IVL0,H,X,X,X,X,1,D,D,I,N,S,G,Y,M,T,D (843),D,843,G,G,L ,N,L,Y,T,R,S,L,DDINSGYMTDGGL NLYTRSL,"Agard, MCP2010",Recombinant caspase,
+,,Non-POU domain-containing octamer-binding protein,Q15233,Q15233,H,X,X,X,/,1,P,P,G,P,A,T,M,M,P,D (422),D,422,G,T,L ,G,L,T,P,P,T,T,PPGPATMMPDGTL GLTPPTT,"Agard, MCP2010",Recombinant caspase,
+,,Nucleobindin-2,P80303,P80303,H,X,X,X,X,1,F,F,K,L,H,D,V,N,S,D (258),D,258,G,F,L ,D,E,Q,E,L,E,A,FFKLHDVNSDGFL DEQELEA,"Agard, MCP2010",Recombinant caspase,
+,,Nucleobindin-2,P80303,P80303,H,X,X,X,X,1,Q,L,K,E,V,W,E,E,T,D (237),D,237,G,L,D,P,N,D,F,D,P,K,QLKEVWEETDGLDPNDFDPK,"Agard, MCP2010",Recombinant caspase,
+,,Nucleoprotein TPR,P12270,P12270,H,X,X,X,X,1,P,T,L,V,V,P,H,R,T,D (2147),D,2147,G,F,A,E,A,I,H,S,P,Q,PTLVVPHRTDGFAEAIHSPQ,"Agard, MCP2010",Recombinant caspase,
+,,Nucleosome assembly protein 1-like 1,P55209,P55209,H,X,X,X,X,1,I,L,A,A,L,Q,E,R,L,D (57),D,57,G,L,V,E,T,P,T,G,Y,I,ILAALQERLDGLVETPTGYI,"Agard, MCP2010",MSU,
+,,Nucleosome assembly protein 1-like 4,Q99733,Q99733,H,X,X,X,/,1,-,-,M,A,D,H,S,F,S,D (8),D,8,G,V,P,S,D,S,V,E,A,A,--MADHSFSDGVPSDSVEAA,"Agard, MCP2010","MSU, DNA/CM",NAP1L4a/b in DANRE both don't conserve.
+,,Perilipin-3,O60664,O60664,H,X,X,/,/,1,-,M,S,A,D,G,A,E,A,D (9),D,9,G,S,T,Q,V,T,V,E,E,P,-MSADGAEADGSTQVTVEEP,"Agard, MCP2010",Recombinant caspase,
+,,Periphilin-1,Q8K2H1,Q8K2H1,M,/,/,X,?,1,T,E,E,P,E,S,N,T,V,D (291),D,291,G,T,E,L,Y,E,D,S,Q,L,TEEPESNTVDGTELYEDSQL,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Phosphatidylinositol 4-kinase beta,Q9UBF8,Q9UBF8,H,X,X,X,X,1,C,D,N,I,S,Q,F,S,V,D (488),D,488,S,I,T,S,Q,E,S,K,E,P,CDNISQFSVDSITSQESKEP,"Agard, MCP2010",Recombinant caspase,
+,,Plasminogen activator inhibitor 1 RNA-binding protein,Q8NC51,Q8NC51,H,X,X,X,?,1,S,K,S,E,E,A,H,A,E,D (337),D,337,S,V,M,D,H,H,F,R,K,P,SKSEEAHAEDSVMDHHFRKP,"Agard, MCP2010",Recombinant caspase,
+,,Poly(rC)-binding protein 2,Q15366,Q15366,H,X,X,X,X,1,P,E,V,K,G,Y,W,G,L,D (282),D,282,A,S,A,Q,T,T,S,H,E,L,PEVKGYWGLDASAQTTSHEL,"Agard, MCP2010",DNA/CM,
+,,Presenilin-1,P49768,P49768,H,X,X,X,/,1,F,S,E,E,W,E,A,Q,R,D (345),D,345,S,H,L ,G,P,H,R,S,T,P,FSEEWEAQRDSHL GPHRSTP,"Craen, FEBS1999",Recombinant caspase,
+,,Presenilin-2,P49810,P49810,H,X,X,X,/,1,D,P,E,M,E,E,D,S,Y,D (329),D,329,S,F,G,E,P,S,Y,P,E,V,DPEMEEDSYDSFGEPSYPEV,"Craen, FEBS1999",Recombinant caspase,
+,,Probable maltase-glucoamylase 2,Q2M2H8,Q2M2H8,H,X,X,X,?,1,R,N,R,L,A,E,I,P,Y,D (363),D,363,V,Q,Y,S,D,I,D,Y,M,D,RNRLAEIPYDVQYSDIDYMD,"Agard, MCP2010","Recombinant caspase, LPS/ATP",Conserved In pseudogene A0A571BDS5_MOUSE. Can't find DANRE variant
+,,Protein disulphide-isomerase A3,P30101,P30101,H,X,X,X,X,1,D,A,S,I,V,G,F,F,D,D (162),D,162,S,F,S,E,A,H,S,E,F,L,DASIVGFFDDSFSEAHSEFL,"Agard, MCP2010",Recombinant caspase,
+,,Protein FAM160B2,Q86V87,Q86V87,H,X,X,X,X,1,D,L,E,E,D,P,Y,F,T,D (506),D,506,S,F,L ,D,S,G,F,Q,T,P,DLEEDPYFTDSFL DSGFQTP,"Agard, MCP2010",Recombinant caspase,
+,,Protein max,P61244,P61244,H,X,/,X,?,5,M,S,D,N,D,D,I,E,V,E (10),E,10,S,D,E,E,Q,P,R,F,Q,S,MSDNDDIEVESDEEQPRFQS,"Krippner,TBJ2001",Recombinant caspase,E->D shift in DANRE
+,,Protein NDRG1,Q92597,Q92597,H,X,X,X,X,1,I,S,G,W,T,Q,A,L,P,D (189),D,189,M,V,V,S,H,L,F,G,K,E,ISGWTQALPDMVVSHLFGKE,"Agard, MCP2010",Recombinant caspase,Conserved in both NDRG1a/b forms in DANRE
+,,Protein SCAF11,Q99590,Q99590,H,X,X,X,X,1,N,N,E,M,I,P,M,E,C,D (722),D,722,S,F,C,S,D,Q,N,E,S,E,NNEMIPMECDSFCSDQNESE,"Agard, MCP2010",Recombinant caspase,"Agard says this site starts at 408- this is a mistake, it actually starts at 722."
+,,Protein SMG7,Q5RJH6,Q5RJH6,M,X,X,X,/,1,T,S,V,V,E,S,L,A,T,D (517),D,517,G,S,P,G,L,K,S,V,L,S,TSVVESLATDGSPGLKSVLS,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Prothymosin alpha,P26350,P26350,M,X,X,X,/,1,E,E,G,G,E,E,E,E,E,E (67),E,67,E,E,G,D,G,E,E,E,D,G,EEGGEEEEEEEEGDGEEEDG,"Lamkanfi,MCP2008",Recombinant caspase,This one is strange- a mostly E site. DANRE E-> D
+,,Pyrin,O15553,O15553,H,X,X,/,?,1,D,P,V,D,G,T,C,V,R,D (330),D,330,S,C,S,F,P,E,A,V,S,G,DPVDGTCVRDSCSFPEAVSG,"Agard, MCP2010",Recombinant caspase,Mouse D->S. Can't find the MEFV zebrafish gene on uniprot
+,,Ras GTPase-activating-like-protein IQGAP1,P46940,P46940,H,X,X,X,X,1,-,-,M,S,A,A,D,E,V,D (8),D,8,G,L,G,V,A,R,P,H,Y,G,--MSAADEVDGLGVARPHYG,"Agard, MCP2010","Recombinant caspase, MSU, DNA(Lys), DNA/CM",
+,,Reticulocalbin-1,Q15293,Q15293,H,X,X,X,X,1,F,V,D,Q,D,E,Y,I,A,D (231),D,231,M,F,S,H,E,E,N,G,P,E,FVDQDEYIADMFSHEENGPE,"Agard, MCP2010",Recombinant caspase,
+,,RNA polymerase-associated protein RTF1 homolog,Q92541,Q92541,H,X,X,X,X,1,S,S,S,E,D,E,E,F,H,D (8),D,8,G,Y,G,E,D,L,M,G,D,E,SSSEDEEFHDGYGEDLMGDE,"Agard, MCP2010",MSU,Agard says this site is 8-9. It is 180-181.
+,,RNA-binding protein 25,P49756,P49756,H,X,X,X,X,1,A,Y,P,L,D,W,S,I,V,D (763),D,763,S,I,L ,M,E,R,R,I,R,P,AYPLDWSIVDSIL MERRIRP,"Agard, MCP2010",LPS/ATP,Agard says this site is 703-704. it is 763-764. Conserved in DANRE rbm25b not rbm25a
+,,RNA-binding protein 26,Q5T8P6,Q5T8P6,H,X,X,X,X,1,L,F,T,A,D,T,Y,D,T,D (431),D,431,G,Y,N,P,E,A,P,S,I,T,LFTADTYDTDGYNPEAPSIT,"Agard, MCP2010",Recombinant caspase,Shares P1-P10' with Q9P2N5
+,,RNA-binding protein 27,Q9P2N5,Q9P2N5,H,X,X,X,?,1,P,L,V,P,D,T,Y,E,P,D (487),D,487,G,Y,N,P,E,A,P,S,I,T,PLVPDTYEPDGYNPEAPSIT,"Agard, MCP2010",Recombinant caspase,Shares P1-P10' with Q5T8P6. D->E in DANRE.
+,,RNA-binding protein 8A,Q9Y5S9,Q9Y5S9,H,X,X,X,X,1,-,-,-,-,M,A,D,V,L,D (6),D,6,L,H,E,A,G,G,E,D,F,A,----MADVLDLHEAGGEDFA,"Agard, MCP2010",Recombinant caspase,
+,,Sequestosome-1,Q13501,Q13501,H,X,X,/,X,1,G,R,P,E,E,Q,M,E,S,D (329),D,329,N,C,S,G,G,D,D,D,W,T,GRPEEQMESDNCSGGDDDWT,"Agard, MCP2010",Recombinant caspase,D -> G in mouse
+,,Serine/Arginine-related protein 53,Q96IZ7,Q96IZ7,H,X,X,X,X,1,V,K,E,I,E,A,I,E,S,D (238),D,238,S,F,V,Q,Q,T,F,R,S,S,VKEIEAIESDSFVQQTFRSS,"Agard, MCP2010",Recombinant caspase,Seems to be called Serine/Arginine-related protein 53 now
+,,Serine/threonine-protein phosphatase 6 regulatory ankyrin repeat subunit A,O15084,O15084,H,X,X,X,?,1,A,V,T,G,H,E,E,C,V,D (703),D,703,A,L,L ,Q,H,G,A,K,C,L,AVTGHEECVDALL QHGAKCL,"Agard, MCP2010","Recombinant caspase, LPS/ATP",Agard says this site is 736-737. It is 703-704. D->E in DANRE.
+,,"Spectrin alpha chain, non-erythrocytic 1",Q13813,Q13813,H,X,X,X,X,4,Y,G,M,M,P,R,D,E,T,D (1185),D,1185,S,K,T,A,S,P,W,K,S,A,YGMMPRDETDSKTASPWKSA,"Nath,BiochemJ1996",Recombinant caspase,
+,,Splicing factor U2AF 65kDa subunit,P26368,P26368,H,X,X,X,?,1,T,A,L,L,P,T,M,T,P,D (128),D,128,G,L,A,V,T,P,T,P,V,P,TALLPTMTPDGLAVTPTPVP,"Agard, MCP2010","Recombinant caspase, MSU, LPS/ATP, DNA(Lys), DNA/CM",Cleaved by caspase 1 and 4- would have thought these would be distinct sites? D->E in DANRE
+,,Splicing factor U2AF 65kDa subunit,P26368,P26368,H,X,X,X,?,4,T,A,L,L,P,T,M,T,P,D (128),D,128,G,L,A,V,T,P,T,P,V,P,TALLPTMTPDGLAVTPTPVP,"Agard, MCP2010","Recombinant caspase, MSU, LPS/ATP, DNA(Lys), DNA/CM",Cleaved by caspase 1 and 4- would have thought these would be distinct sites? D->E in DANRE
+,,STE20-like serine/threonine-protein kinase,O54988,O54988,M,X,X,X,?,1,G,A,E,A,R,A,L,G,S,E (667),E,667,G,E,A,A,A,T,E,V,D,L,GAEARALGSEGEAAATEVDL,"Lamkanfi,MCP2008",Recombinant caspase,"Can't track down gene in DANRE, even under alternate names"
+,,Sterol regulatory element-binding protein 1,P36956,P36956,H,X,X,X,X,1,G,G,S,G,S,D,S,E,P,D (460),D,460,S,P,V,F,E,D,S,K,A,K,GGSGSDSEPDSPVFEDSKAK,"Wang, JBiolChem1995",Recombinant caspase,
+,,Sterol regulatory element-binding protein 1,Q12772,Q12772,H,X,X,X,X,1,D,D,A,K,V,K,D,E,P,D (468),D,468,S,P,P,V,A,L,G,M,V,D,DDAKVKDEPDSPPVALGMVD,"Wang, JBiolChem1995",Recombinant caspase,
+,,Superoxide dismutase [Cu-Zn],P00441,P00441,H,X,X,X,X,1,D,G,V,A,D,V,S,I,E,D (102),D,102,S,V,I,S,L,S,G,D,H,C,DGVADVSIEDSVISLSGDHC,"Agard, MCP2010",Recombinant caspase,
+,,Suppressor of tumourigenicity protein 14,Q9Y5Y6,Q9Y5Y6,H,X,X,X,X,1,F,C,K,P,L,F,W,V,C,D (509),D,509,S,V,N,D,C,G,D,N,S,D,FCKPLFWVCDSVNDCGDNSD,"Agard, MCP2010",Recombinant caspase,
+,,Synapse-associated protein 1,Q96A49,Q96A49,H,X,/,X,X,1,S,P,G,V,S,E,F,V,S,D (278),D,278,A,F,D,A,C,N,L,N,Q,E,SPGVSEFVSDAFDACNLNQE,"Agard, MCP2010","Recombinant caspase, MSU, DNA/CM",Apparent deletion in PANTR
+,,Target of Myb protein 1,O88746,O88746,M,X,X,X,/,1,E,A,E,L,A,T,D,L,I,D (324),D,324,M,G,P,D,P,A,A,T,N,N,EAELATDLIDMGPDPAATNN,"Lamkanfi,MCP2008",Recombinant caspase,
+,,THO complex subunit 4,Q86V81,Q86V81,H,X,X,X,X,1,K,Q,L,P,D,K,W,Q,H,D (90),D,90,L,F,D,S,G,F,G,G,G,A,KQLPDKWQHDLFDSGFGGGA,"Agard, MCP2010",Recombinant caspase,
+,,Transcription intermediary factor 1-beta,Q13263,Q13263,H,X,X,X,?,1,K,E,E,D,G,S,L,S,L,D (685),D,685,G,A,D,S,T,G,V,V,A,K,KEEDGSLSLDGADSTGVVAK,"Agard, MCP2010",MSU,Can't find TRIM28 gene product in DANRE.
+,,Transcription intermediary factor 1-beta,Q62318,Q62318,M,X,X,X,/,1,K,E,E,D,G,S,L,S,L,D (684),D,684,G,A,D,S,T,G,V,V,A,K,KEEDGSLSLDGADSTGVVAK,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Transcription intermediary factor 1-beta,Q62318,Q62318,M,X,X,X,/,1,L,A,T,D,S,T,F,S,M,E (731),E,731,Q,P,G,G,T,L,D,L,T,L,LATDSTFSMEQPGGTLDLTL,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Tubulin beta chain,P07437,P07437,H,X,X,X,X,1,H,Y,T,E,G,A,E,L,V,D (114),D,114,S,V,L ,D,V,V,R,K,E,A,HYTEGAELVDSVL DVVRKEA,"Agard, MCP2010","Recombinant caspase, LPS/ATP",
+,,Tumour protein D54,O43399,O43399,H,X,X,X,X,1,N,S,P,N,K,G,L,L,S,D (20),D,20,S,M,T,D,V,P,V,D,T,G,NSPNKGLLSDSMTDVPVDTG,"Agard, MCP2010","Recombinant caspase, MSU, LPS/ATP, DNA(Lys), DNA/CM",
+,,Twisted gastrulation protein homolog 1,Q9GZX9,Q9GZX9,H,X,X,X,X,1,L,G,A,L,W,D,E,C,C,D (72),D,72,C,V,G,M,C,N,P,R,N,Y,LGALWDECCDCVGMCNPRNY,"Agard, MCP2010",Recombinant caspase,
+,,Tyrosine-protein phosphatase non-receptor type 18,Q61152,Q61152,M,/,/,X,/,1,G,P,D,A,Y,E,E,V,T,D (424),D,424,G,A,Q,T,G,G,L,G,F,N,GPDAYEEVTDGAQTGGLGFN,"Lamkanfi,MCP2008",Recombinant caspase,
+,,U2 snRNP-associated SURP motif-containing protein,O15042,O15042,H,X,X,X,X,1,P,I,K,S,L,D,D,D,L,D (737),D,737,G,V,P,L,D,A,T,E,D,S,PIKSLDDDLDGVPLDATEDS,"Agard, MCP2010","Recombinant caspase, MSU",DDLD(GVP) motif repeated in human protein
+,,Ubiquitin carboxyl-terminal hydrolase 10,Q14694,Q14694,H,X,X,X,X,1,N,V,E,A,E,V,L,E,N,D (138),D,138,G,V,S,G,G,L,G,Q,R,E,NVEAEVLENDGVSGGLGQRE,"Agard, MCP2010",Recombinant caspase, 
+,,Uncharacterised protein FLJ45252,Q6ZSR9,Q6ZSR9,H,X,?,X,?,1,P,A,T,D,G,L,S,E,P,D (123),D,123,V,F,A,I,A,P,F,R,S,S,PATDGLSEPDVFAIAPFRSS,"Agard, MCP2010",Recombinant caspase,Can't find DANRE or PANTR equivalent on uniprot.
+,,Vacuolar protein sorting-associated protein 72 homolog,Q62481,Q62481,M,X,X,X,X,1,D,Q,S,D,T,E,D,E,V,D (58),D,58,S,D,F,D,I,D,E,G,D,E,DQSDTEDEVDSDFDIDEGDE,"Lamkanfi,MCP2008",Recombinant caspase,
+,,Very low-density lipoprotein receptor,P98155,P98155,H,X,X,X,X,1,K,D,L,V,I,G,Y,E,C,D (381),D,381,C,A,A,G,F,E,L,I,D,R,KDLVIGYECDCAAGFELIDR,"Agard, MCP2010",Recombinant caspase,
+,,Vimentin,P08670,P08670,H,X,X,X,?,1,Q,E,Q,H,V,Q,I,D,V,D (259),D,259,V,S,K,P,D,L,T,A,A,L,QEQHVQIDVDVSKPDLTAAL,"Agard, MCP2010","Recombinant caspase, DNA/CM","DANRE D->E, may still function."
+,,Vimentin,P08670,P08670,H,X,X,X,?,1,Q,D,S,V,D,F,S,L,A,D (90),D,90,A,I,N,T,E,F,K,N,T,R,QDSVDFSLADAINTEFKNTR,"Agard, MCP2010",MSU,"DANRE D->E, may still function."
+,,Vimentin,P08670,P08670,H,X,X,?,/,1,S,L,N,L,R,E,T,N,L ,D (429),D,429,S,L,P,L,V,D,T,H,S,K,SLNLRETNL DSLPLVDTHSK,"Agard, MCP2010",DNA/CM,"D->E in MOUSE, otherwise perfect site"
+,,Y-box-binding protein 3,P16989,P16989,H,X,X,X,?,1,Q,A,G,E,I,G,E,M,K,D (269),D,269,G,V,P,E,G,A,Q,L,Q,G,QAGEIGEMKDGVPEGAQLQG,"Agard, MCP2010",MSU,Can't find DANRE YBX3 gene on Uniprot.
+,,Y-box-binding protein 3,P16989,P16989,H,X,X,X,/,1,A,E,A,A,N,V,T,G,P,D (161),D,161,G,V,P,V,E,G,S,R,Y,A,AEAANVTGPDGVPVEGSRYA,"Agard, MCP2010",MSU,
+,,YTH domain family protein 1,Q9BYJ9,Q9BYJ9,H,X,X,X,X,1,S,N,G,D,H,H,F,M,H,D (102),D,102,A,V,F,G,Q,P,G,G,L,G,SNGDHHFMHDAVFGQPGGLG,"Agard, MCP2010",Recombinant caspase,Conserved in DANRE's Q802Z0
+,,YTH domain family protein 2,Q9Y5A9,Q9Y5A9,H,X,X,X,/,1,G,S,G,F,G,H,N,G,V,D (367),D,367,G,N,G,V,G,Q,S,Q,A,G,GSGFGHNGVDGNGVGQSQAG,"Agard, MCP2010",MSU,
+,,Zinc finger CCCH domain-containing protein 4,Q9UPT8,Q9UPT8,H,X,X,X,/,1,L,F,P,E,H,P,L,E,P,D (741),D,741,S,F,S,E,G,G,P,P,G,R,LFPEHPLEPDSFSEGGPPGR,"Agard, MCP2010","Recombinant caspase, MSU",
+,,Zinc finger matrin-type protein 2,Q96NC0,Q96NC0,H,X,X,X,X,1,C,N,V,C,D,C,V,V,K,D (91),D,91,S,I,N,F,L,D,H,I,N,G,CNVCDCVVKDSINFLDHING,"Agard, MCP2010",Recombinant caspase,
+,,Zinc finger protein 831,Q5JPB2,Q5JPB2,H,X,X,/,/,1,A,S,G,P,S,P,G,E,A,D (1002),D,1002,S,I,L ,E,D,P,S,C,S,R,ASGPSPGEADSIL EDPSCSR,"Agard, MCP2010",LPS/ATP,Could only find a prarie deer mouse variant which doesn't conserve
+,,Zyxin,Q15942,Q15942,H,X,X,X,/,1,K,V,S,S,I,D,L,E,I,D (149),D,149,S,L,S,S,L,L,D,D,M,T,KVSSIDLEIDSLSSLLDDMT,"Agard, MCP2010","Recombinant caspase, LPS/ATP, DNA/CM",
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

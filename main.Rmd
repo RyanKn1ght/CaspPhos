@@ -39,7 +39,27 @@ For our previous work (unpublished data), we compiled a database of inflammatory
 
 The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
 
+```{r tidy-phosphate}
+#Load raw format substrate table.
+file <- "./data/caspase_substrates.csv"
+substrates <- read.csv(file) %>% janitor::clean_names()
+
+#Compile the data into a shorter csv in appropriate format: name and long sequence.
+sequence_table <- data.frame(substrates$substrate_recommended_name,
+                             substrates$concatenated_p10_p10_sequence)
+colnames(sequence_table) <- c("Substrate","Sequence")
+
+#Replace substrate name spaces with underscores as FASTA does not support spaces.
+sequence_table <- sequence_table %>% mutate(Substrate = str_replace_all(Substrate, " ", "_"))
+
+sequence_table
+```
+
 Data was tidied into an amenable format for analysis with two forms of phosphate site prediction software, DeepPhos [@luo_2019]
+
+```{python deep-phos}
+
+```
 
 
 # Results
