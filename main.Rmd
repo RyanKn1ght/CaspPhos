@@ -22,10 +22,7 @@ knitr::opts_chunk$set(echo = FALSE,
 library(tidyverse)
 library(citr)
 library(reticulate)
-# conda_install('re-reticulate', packages = 'matplotlib')
-# conda_install('re-reticulate', packages = 'scikit-learn')
-# conda_install('re-reticulate', packages = 'keras')
-conda_install('re-reticulate', packages = "")
+# 
 ```
 
 # Introduction
@@ -46,7 +43,7 @@ The limited history of proteomic analysis performed on apopototic caspases sugge
 
 ```{r tidy-phosphate}
 #Load raw format substrate table.
-file <- "./data/caspase_substrates.csv"
+file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
 
 #Compile the data into a shorter csv in appropriate format: name and long sequence.
@@ -63,8 +60,11 @@ Data was tidied into an amenable format for analysis with phosphate site predict
 ```{python deep-phos}
 
 from deepphos import predict
-predict.predict_for_deepphos("test data.csv", site="S", predictFrame = "general")
+#predict.predict_for_deepphos("test data.csv", site="S", predictFrame = "general")
 
+train_file_name = 'test data.csv'
+site = 'S','T'
+predict_for_deepphos(train_file_name, site, predictFrame='kinase', hierarchy='group', kinase='AGC')
 
 ```
 

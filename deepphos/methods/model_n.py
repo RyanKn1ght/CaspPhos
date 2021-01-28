@@ -53,7 +53,7 @@ def model_net(X_train1, X_train2, X_train3, y_train,
     ###################
     # Construct model #
     ###################
-    from methods.phosnet import Phos
+    from deepphos.methods.phosnet import Phos
     model = Phos(nb_classes, nb_layers, img_dim1, img_dim2, img_dim3, init_form, nb_dense_block,
                              growth_rate, filter_size_block1, filter_size_block2, filter_size_block3,
                              nb_filter, filter_size_ori,

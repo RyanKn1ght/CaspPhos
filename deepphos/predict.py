@@ -41,7 +41,7 @@ def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
     win1 = 51
     win2 = 33
     win3 = 15
-    from methods.dataprocess_predict import getMatrixInput
+    from deepphos.methods.dataprocess_predict import getMatrixInput
     [X_test1,y_test,ids,position] = getMatrixInput(train_file_name, sites, win1)
     [X_test2,_,_,_] = getMatrixInput(train_file_name, sites, win2)
     [X_test3,_,_,_]  = getMatrixInput(train_file_name, sites, win3)
@@ -49,21 +49,21 @@ def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
 #     print X_test1.shape
 #     print len(position)
 
-    from methods.model_n import model_net
+    from deepphos.methods.model_n import model_net
     model = model_net(X_test1, X_test2, X_test3, y_test,nb_epoch = 0)
 
     #load model weight
     if predictFrame == 'general':
         outputfile = 'general_{:s}'.format(site)
         if site == ('S','T'):
-            model_weight = './models/model_general_S,T.h5'
+            model_weight = './deepphos/models/model_general_S,T.h5'
         if site == 'Y':
-            model_weight = './models/model_general_Y.h5'
+            model_weight = './deepphos/models/model_general_Y.h5'
 
 
     if predictFrame == 'kinase':
         outputfile = 'kinase_{:s}_{:s}'.format(hierarchy, kinase)
-        model_weight = './models/model_{:s}_{:s}.h5'.format(hierarchy, kinase)
+        model_weight = './deepphos/models/model_{:s}_{:s}.h5'.format(hierarchy, kinase)
 #     print model_weight
     model.load_weights(model_weight)
     predictions_t = model.predict([X_test1, X_test2, X_test3])
