@@ -10,12 +10,20 @@ DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), d
 
 # Dependencies
 
-To co-operate with python 3.7:
+Python: Anaconda 3.7 interpreter
 
-Anaconda 3.7 interpreter
-h5py == 2.10.0 (This comes with anaconda, but probably needs version changing MANUALLY. Sorry.)
-keras = 2.3.1
-scikit-learn = 0.24.1
+Python: h5py == 2.10.0 (This comes with anaconda, but probably needs version changing MANUALLY. Sorry.)
+
+Python: keras = 2.3.1
+
+Python: scikit-learn = 0.24.1
+
+R: tidyverse
+
+R: citr
+
+R: reticulate
+
 
 # Credits
 # License
