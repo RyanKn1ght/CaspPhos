@@ -42,29 +42,28 @@ For our previous work (unpublished data), we compiled a database of inflammatory
 The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
 
 ```{r tidy-phosphate}
-#Load raw format substrate table.
+#Load raw format substrate table. Rename position notation with numbers to identify locations within the shorter sequence better.
 file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
+names(substrates)[c(12:20, 22, 24:33)] <- seq(1,20)
 
-#Compile the data into a shorter csv in appropriate format: name and long sequence.
-sequence_table <- data.frame(substrates$substrate_recommended_name,
-                             substrates$concatenated_p10_p10_sequence)
-colnames(sequence_table) <- c("Substrate","Sequence")
+#Reduce table to format accepted by DeepPhos, by isolating each residue that can be phosphorylated, the sequence it lies in, and its position in that sequence. 
+potential_sites <- substrates %>% 
+  select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
+  pivot_longer(names_to = "site", values_to = "residue", cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
+  filter(residue %in% c("S","T","Y"))
 
-#Replace substrate name spaces with underscores as FASTA does not support spaces.
-sequence_table <- sequence_table %>% mutate(Substrate = str_replace_all(Substrate, " ", "_"))
 ```
 
 Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019]
 
 ```{python deep-phos}
-
 from deepphos import predict
 #predict.predict_for_deepphos("test data.csv", site="S", predictFrame = "general")
 
 train_file_name = 'test data.csv'
 site = 'S','T'
-predict_for_deepphos(train_file_name, site, predictFrame='kinase', hierarchy='group', kinase='AGC')
+predict.predict_for_deepphos(train_file_name, site, predictFrame='kinase', hierarchy='group', kinase='AGC')
 
 ```
 
