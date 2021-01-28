@@ -21,6 +21,11 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r packages}
 library(tidyverse)
 library(citr)
+library(reticulate)
+# conda_install('re-reticulate', packages = 'matplotlib')
+# conda_install('re-reticulate', packages = 'scikit-learn')
+# conda_install('re-reticulate', packages = 'keras')
+conda_install('re-reticulate', packages = "")
 ```
 
 # Introduction
@@ -29,7 +34,7 @@ library(citr)
 
 Cellular stress and infection promote the assembly of inflammasome complexes, leading to the activation of inflammatory caspases. Activation of these inflammatory caspases, Caspase-1, Caspase-4 and Caspase-5 in humans, and Caspase-1 and Caspase-11 in mice, induces a morphologically distinct form of programmed cell death known as pyroptosis. When undergoing pyroptosis, cells rupture and release their contents, including pro-inflammatory cytokines and danger signals to both prevent intracellular pathogen replication and induce an immune response.
 
-Despite their namesake, there exists substantiative evidence that caspases do not exclusively cleave substrates at aspartate residues but have a propensity to act at a variety of other amino acid residues [@seaman_2016], most notably glutamate, posessing similar acidic properties to aspartate.
+Despite their namesake, there exists substantive evidence that caspases do not exclusively cleave substrates at aspartate residues but have a propensity to act at a variety of other amino acid residues [@seaman_2016], most notably glutamate, possessing similar acidic properties to aspartate.
 
 For our previous work (unpublished data), we compiled a database of inflammatory caspase substrates. As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites.
 
@@ -51,13 +56,15 @@ colnames(sequence_table) <- c("Substrate","Sequence")
 
 #Replace substrate name spaces with underscores as FASTA does not support spaces.
 sequence_table <- sequence_table %>% mutate(Substrate = str_replace_all(Substrate, " ", "_"))
-
-sequence_table
 ```
 
-Data was tidied into an amenable format for analysis with two forms of phosphate site prediction software, DeepPhos [@luo_2019]
+Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019]
 
 ```{python deep-phos}
+
+from deepphos import predict
+predict.predict_for_deepphos("test data.csv", site="S", predictFrame = "general")
+
 
 ```
 
