@@ -60,14 +60,17 @@ potential_sites <- substrates %>%
   select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
   pivot_longer(names_to = "site", values_to = "residue", cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
   relocate(site, .after = uniprot_id) %>%
-  filter(residue %in% c("S","T","Y"))
+  filter(residue %in% c("S","T","Y")) %>%
+  rename(sequence = concatenated_p10_p10_sequence)
 
 #The prediction algorithm handles sites in two groups, (S and T) and Y.
 potential_sites_ST <- potential_sites %>% prepare_sites(c("S","T"))
 potential_sites_Y <- potential_sites %>% prepare_sites("Y")
 
-
-
+#Write to csv to retain the data.
+write.csv(potential_sites_ST, ".data/data.csv", col.names = F, row.names = F)
+write.csv(potential_sites_Y, ".data/processed/potential_sites_Y.csv", col.names = F, row.names = F)
+?write.csv
 ```
 
 Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019]
