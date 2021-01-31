@@ -70,14 +70,9 @@ def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
     results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
 
     result = pd.DataFrame(results_ST)
-    result.to_csv(outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t',
-                  quoting=csv.QUOTE_NONNUMERIC)
-    print("Hello")
-if __name__ == '__main__':
-    train_file_name = 'test data.csv'
-    site = 'S','T'
-    predict_for_deepphos(train_file_name, site, predictFrame='kinase',
-                         hierarchy='group', kinase='AGC')
+#result.to_csv(outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)
+    result.to_csv("./data/processed" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)        
+                  
 
 
 
