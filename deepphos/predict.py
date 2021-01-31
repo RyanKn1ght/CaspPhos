@@ -71,7 +71,7 @@ def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
 
     result = pd.DataFrame(results_ST)
 #result.to_csv(outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)
-    result.to_csv("./data/processed" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)        
+    result.to_csv("./data/processed/" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)        
                   
 
 
