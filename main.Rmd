@@ -25,6 +25,9 @@ library(tidyverse)
 library(citr)
 library(reticulate)
 
+#Load function
+source("functions/preparesites.R")
+
 #Even if python is configured to anaconda in settings, this line must be run in order to knit.
 use_condaenv("re-reticulate")
 ```
@@ -46,16 +49,24 @@ For our previous work (unpublished data), we compiled a database of inflammatory
 The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
 
 ```{r tidy-phosphate}
+
 #Load raw format substrate table. Rename position notation with numbers to identify locations within the shorter sequence better.
 file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
 names(substrates)[c(12:20, 22, 24:33)] <- seq(1,20)
 
-#Reduce table to format accepted by DeepPhos, by isolating each residue that can be phosphorylated, the sequence it lies in, and its position in that sequence. 
+#Reduce table down to a list of sites that can be phosphorylated (S,T,Y) in deepphos format.
 potential_sites <- substrates %>% 
   select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
   pivot_longer(names_to = "site", values_to = "residue", cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
+  relocate(site, .after = uniprot_id) %>%
   filter(residue %in% c("S","T","Y"))
+
+#The prediction algorithm handles sites in two groups, (S and T) and Y.
+potential_sites_ST <- potential_sites %>% prepare_sites(c("S","T"))
+potential_sites_Y <- potential_sites %>% prepare_sites("Y")
+
+
 
 ```
 
