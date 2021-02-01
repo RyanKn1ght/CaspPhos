@@ -12,7 +12,7 @@ DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), d
 
 Anaconda interpreter (Python 3.7)
 
-Python: h5py == 2.10.0 (This comes with anaconda, but will likely need its version changing MANUALLY. )
+Python: h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
 
 Python: keras = 2.3.1
 
