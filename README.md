@@ -6,13 +6,13 @@ This program looks for, and visualises, phosphate sites within a set of caspase 
 
 This is machine learning intensive, so dependencies can be acquired most easily by configuring a conda environment (see below). Anaconda is built with mathematical-oriented tools not included in standard python installs, such as numpy and pandas.
 
-DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), does not run, but I have repaired it in line with its license for use in this program. This took a very, very long time but I now have working python 3.7 code and dependencies list.
+DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), does not run, but I have repaired it in line with its license for use in this program.
 
 # Dependencies
 
-Python: Anaconda 3.7 interpreter
+Anaconda interpreter (Python 3.7)
 
-Python: h5py == 2.10.0 (This comes with anaconda, but probably needs version changing MANUALLY. Sorry.)
+Python: h5py == 2.10.0 (This comes with anaconda, but will likely need its version changing MANUALLY. )
 
 Python: keras = 2.3.1
 
@@ -23,6 +23,8 @@ R: tidyverse
 R: citr
 
 R: reticulate
+
+R: ggseqlogo (https://omarwagih.github.io/ggseqlogo/)
 
 
 # Credits
