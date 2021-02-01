@@ -68,9 +68,9 @@ potential_sites_ST <- potential_sites %>% prepare_sites(c("S","T"))
 potential_sites_Y <- potential_sites %>% prepare_sites("Y")
 
 #Write to csv to retain the data.
-write.csv(potential_sites_ST, ".data/data.csv", col.names = F, row.names = F)
-write.csv(potential_sites_Y, ".data/processed/potential_sites_Y.csv", col.names = F, row.names = F)
-?write.csv
+#write.csv(potential_sites_ST, ".data/data.csv", col.names = F, row.names = F)
+#write.csv(potential_sites_Y, ".data/processed/potential_sites_Y.csv", col.names = F, row.names = F)
+#?write.csv
 ```
 
 Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019]
@@ -90,6 +90,7 @@ predict.predict_for_deepphos(train_file_name, site, predictFrame='kinase', hiera
 
 ```
 
+Data was presented using ggseqlogo [@wagih_2017]
 
 # Results
 
