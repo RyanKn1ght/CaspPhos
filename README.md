@@ -32,7 +32,7 @@ R: ggseqlogo (https://omarwagih.github.io/ggseqlogo/)
 
 # Troubleshooting
 
-##The python code does not work:
+## The python code does not work:
 The majority of dependencies will be installed when you create an anaconda environment, but those that are likely missing can be installed with the below code. Running one of these statements in your R terminal will create an anaconda environment. Here I have called mine "re-reticulate" but it doesn't really matter. 
 
 Manually change your h5py version to 2.10.0 - This is essential!
@@ -43,7 +43,7 @@ conda_install('re-reticulate', packages = 'scikit-learn')
 conda_install('re-reticulate', packages = 'keras')
 ```
 
-##Configuring Rstudio to run in an anaconda environment:
+## Configuring Rstudio to run in an anaconda environment:
 
 RStudio -> Preferences -> Python -> Select Python Interpreter
 If you don't have an anaconda build in the list (with its green circular logo), you can build one at the same time as installing one of your dependencies, after you install anaconda, for example: 
