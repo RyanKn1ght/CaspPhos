@@ -5,8 +5,8 @@ date: "24/01/2021"
 output: 
   bookdown::html_document2:
     fig_caption: yes
-    css: "style.css"
-bibliography: references.bib
+    css: "resources/style.css"
+bibliography: resources/references.bib
 ---
 
 <!-- Configuration of default code chunk options -->
@@ -19,14 +19,12 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.retina = 3)
 ```
 
-```{r packages}
-#Load requisite R libraries
-library(tidyverse)
-library(citr)
-library(reticulate)
+```{r requirements}
+library(tidyverse) #Data manipulation
+library(reticulate) #Knit requirement
 
-#Load function
-source("functions/preparesites.R")
+#Selects data to be passed to the phosphate site machine learning model.
+source("functions/preparesites.R") 
 
 #Even if python is configured to anaconda in settings, this line must be run in order to knit.
 use_condaenv("re-reticulate")
