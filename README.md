@@ -15,6 +15,7 @@ The output of ```SessionInfo()``` can be found in xyz
 ### Core
 
 R 4.0
+
 Python 3.7 - Anaconda 
 
 ### Python Libraries 
