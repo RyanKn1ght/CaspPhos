@@ -10,6 +10,8 @@ DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), d
 
 # Dependencies
 
+The output of ```SessionInfo()``` can be found in xyz
+
 ### Core
 
 R 4.0
