@@ -54,6 +54,9 @@ If you don't have an anaconda build in the list (with its green circular logo), 
 conda_install('my_environment_name', packages = 'keras')
 ```
 
+## Python diagnostics
+There is an included python script, ```python-diagnostic.py``` to test any errors that come with custom datasets in a minimal environment- the error reporting comes out a bit better here.
+
 ## The python code does not work:
 The majority of dependencies will be installed when you create an anaconda environment, but those that are likely missing can be installed with the below code. Running one of these statements in your R terminal will create an anaconda environment. Here I have called mine "re-reticulate" but it doesn't really matter. 
 
@@ -66,7 +69,8 @@ conda_install('re-reticulate', packages = 'keras')
 ```
 
 ## Custom dataset errors
-If python throws something like this:
+
+If Python throws one of these:
 
 ```
 results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
@@ -74,3 +78,5 @@ TypeError: list indices must be integers or slices, not tuple
 ```
 
 This actually means that there are no examples of the criteria in your submitted dataset.
+
+
