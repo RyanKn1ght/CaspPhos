@@ -6,7 +6,7 @@ This program looks for, and visualises, phosphate sites within a set of caspase 
 
 This is machine learning intensive, so dependencies can be acquired most easily by configuring a conda environment (see below). Anaconda is built with mathematical-oriented tools not included in standard python installs, such as numpy and pandas.
 
-DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), does not run, but I have repaired it in line with its license for use in this program.
+DeepPhos, from its [GitHub repository](https://github.com/USTC-HIlab/DeepPhos), does not run, but I have repaired it in line with its license for use in this program.
 
 # Dependencies
 
@@ -29,11 +29,11 @@ scikit-learn = 0.24.1
 
 tidyverse
 
-citr?
+?citr?
 
 reticulate
 
-ggseqlogo (https://omarwagih.github.io/ggseqlogo/)
+[ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
 
 
 # Credits
