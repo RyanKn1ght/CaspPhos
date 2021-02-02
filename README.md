@@ -68,7 +68,9 @@ conda_install('re-reticulate', packages = 'keras')
 ## Custom dataset errors
 If python throws something like this:
 
-```results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
-TypeError: list indices must be integers or slices, not tuple```
+```
+results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
+TypeError: list indices must be integers or slices, not tuple 
+```
 
 This actually means that there are no examples of the criteria in your submitted dataset.
