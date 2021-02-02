@@ -10,21 +10,28 @@ DeepPhos, from its GitHub repository (https://github.com/USTC-HIlab/DeepPhos), d
 
 # Dependencies
 
-Anaconda interpreter (Python 3.7)
+### Core
 
-Python: h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
+R 4.0
+Python 3.7 - Anaconda 
 
-Python: keras = 2.3.1
+### Python Libraries 
 
-Python: scikit-learn = 0.24.1
+h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
 
-R: tidyverse
+keras = 2.3.1
 
-R: citr
+scikit-learn = 0.24.1
 
-R: reticulate
+### R Packages
 
-R: ggseqlogo (https://omarwagih.github.io/ggseqlogo/)
+tidyverse
+
+citr?
+
+reticulate
+
+ggseqlogo (https://omarwagih.github.io/ggseqlogo/)
 
 
 # Credits
