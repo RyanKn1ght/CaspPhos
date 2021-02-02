@@ -9,7 +9,7 @@ output:
 bibliography: resources/references.bib
 ---
 
-<!-- Configuration of default code chunk options -->
+<!-- The analysis does knit, but takes a while. Below: R environment setup -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
@@ -21,10 +21,10 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r requirements}
 library(tidyverse) #Data manipulation
-library(reticulate) #Knit requirement
+library(reticulate) #Doesn't need to be called to run, but does to knit.
 
 #Selects data to be passed to the phosphate site machine learning model.
-source("functions/preparesites.R") 
+source("libraries/preparesites.R") 
 
 #Even if python is configured to anaconda in settings, this line must be run in order to knit.
 use_condaenv("re-reticulate")
@@ -53,22 +53,32 @@ file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
 names(substrates)[c(12:20, 22, 24:33)] <- seq(1,20)
 
-#Reduce table down to a list of sites that can be phosphorylated (S,T,Y) in deepphos format.
+# Tidy up the table names
+# Reduce table down to a list of potential phosphorylation sites (S,T,Y) in deepphos format.
+# Strips whitespace that is in the sequence by accident in the standard data set.
+# Capitalise sequence in the event that there are some lowercase letters included by mistake.
+# Short sequences with empty spaces (-) cut out as removing - will mis-align them.
 potential_sites <- substrates %>% 
   select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
-  pivot_longer(names_to = "site", values_to = "residue", cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
+  pivot_longer(names_to = "site", 
+               values_to = "residue", 
+               cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
   relocate(site, .after = uniprot_id) %>%
   filter(residue %in% c("S","T","Y")) %>%
-  rename(sequence = concatenated_p10_p10_sequence)
+  rename(sequence = concatenated_p10_p10_sequence) %>% 
+  mutate(sequence = str_replace(sequence, " ", "")) %>%
+  mutate(sequence = toupper(sequence)) %>%
+  filter(!(grepl("-", sequence))) 
+  
 
 #The prediction algorithm handles sites in two groups, (S and T) and Y.
 potential_sites_ST <- potential_sites %>% prepare_sites(c("S","T"))
 potential_sites_Y <- potential_sites %>% prepare_sites("Y")
 
 #Write to csv to retain the data.
-#write.csv(potential_sites_ST, ".data/data.csv", col.names = F, row.names = F)
-#write.csv(potential_sites_Y, ".data/processed/potential_sites_Y.csv", col.names = F, row.names = F)
-#?write.csv
+write.table(potential_sites_ST, "./data/processed/all_potential_ST.csv", quote = F, sep = ",", col.names = F, row.names = F)
+write.table(potential_sites_Y, "./data/processed/all_potential_Y.csv", quote = F, sep = ",", col.names = F, row.names = F)
+
 ```
 
 Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019]
@@ -78,28 +88,18 @@ Data was tidied into an amenable format for analysis with phosphate site predict
 import warnings
 warnings.filterwarnings('ignore')
 
-#Load modified deepphos code
+#Load forked/modified deepphos code
 from deepphos import predict
-#predict.predict_for_deepphos("test data.csv", site="S", predictFrame = "general")
 
-train_file_name = './data/raw/test data.csv'
-site = 'S','T'
-predict.predict_for_deepphos(train_file_name, site, predictFrame='kinase', hierarchy='group', kinase='AGC')
+#Run deepphos predictions
+predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
+predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
 
 ```
 
 Data was presented using ggseqlogo [@wagih_2017]
 
 # Results
-
-
-
-
-
-
-
-
-
 
 # References
 

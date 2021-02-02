@@ -22,7 +22,7 @@ from keras.layers.normalization import BatchNormalization
 from keras.regularizers import l2
 import copy
 
-def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
+def predict_for_deepphos(train_file_name,sites, predictFrame = 'general',
                          hierarchy=None, kinase=None):
     '''
 
@@ -54,23 +54,22 @@ def predict_for_deepphos(train_file_name,sites,predictFrame = 'general',
 
     #load model weight
     if predictFrame == 'general':
-        outputfile = 'general_{:s}'.format(site)
-        if site == ('S','T'):
+        outputfile = 'general_{:s}_'.format(sites)
+        if sites == 'ST':
             model_weight = './deepphos/models/model_general_S,T.h5'
-        if site == 'Y':
+        if sites == 'Y':
             model_weight = './deepphos/models/model_general_Y.h5'
-
 
     if predictFrame == 'kinase':
         outputfile = 'kinase_{:s}_{:s}'.format(hierarchy, kinase)
         model_weight = './deepphos/models/model_{:s}_{:s}.h5'.format(hierarchy, kinase)
-#     print model_weight
+
     model.load_weights(model_weight)
     predictions_t = model.predict([X_test1, X_test2, X_test3])
+    #print(ids, position,predictions_t)
     results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
 
     result = pd.DataFrame(results_ST)
-#result.to_csv(outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)
     result.to_csv("./data/processed/" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)        
                   
 
