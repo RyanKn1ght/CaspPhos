@@ -6,7 +6,7 @@ This program looks for, and visualises, phosphate sites within a set of caspase 
 
 Built in R and Python in the form of an integrated Rmarkdown script, ```main.md```.
 
-This is machine learning intensive, so dependencies can be acquired most easily by configuring a conda environment (see below). Anaconda is built with mathematical-oriented tools not included in standard python installs, such as numpy and pandas. DeepPhos, from its [GitHub repository](https://github.com/USTC-HIlab/DeepPhos), does not run, but I have repaired it in line with its license for use in this program.
+This is machine learning intensive, so dependencies can be acquired most easily by configuring a conda environment (see below). Anaconda is built with mathematical-oriented tools not included in standard python installs, such as numpy and pandas. DeepPhos, from its [GitHub repository](https://github.com/USTC-HIlab/DeepPhos), does not run, but it has been modified and repaired to work here.
 
 # Dependencies
 
@@ -38,7 +38,12 @@ reticulate
 
 
 # Credits
+
+Thank you to Fenglin Luo et. al. and the USTCHI lab for their work on [DeepPhos](https://academic.oup.com/bioinformatics/article/35/16/2766/5270665), and Omar Wagih for developing [ggseqlogo](https://github.com/omarwagih/ggseqlogo)
+
 # License
+
+Published under GNU AGPL 3.0. Licensing terms are enclosed.
 
 # Issues and Troubleshooting
 
