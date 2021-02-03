@@ -40,8 +40,15 @@ reticulate
 # Credits
 # License
 
-# Troubleshooting
+# Issues and Troubleshooting
 
+## Install and configure ggseqlogo
+
+Install ggseqlogo directly from github:
+
+```
+devtools::install_github("omarwagih/ggseqlogo")
+```
 
 ## Configuring Rstudio to run in an anaconda environment:
 
