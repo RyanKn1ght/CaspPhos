@@ -30,7 +30,7 @@ scikit-learn = 0.24.1
 
 tidyverse
 
-?citr?
+gridExtra
 
 reticulate
 
