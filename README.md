@@ -55,6 +55,12 @@ Install ggseqlogo directly from github:
 devtools::install_github("omarwagih/ggseqlogo")
 ```
 
+If you get a corrupted download (lazy-load database corrupt error), download the library again setting ```FORCE = TRUE```, ie.
+
+```
+devtools::install_github("omarwagih/ggseqlogo", force=TRUE)
+```
+
 ## Configuring Rstudio to run in an anaconda environment:
 
 1) Install anaconda (https://www.anaconda.com/)
