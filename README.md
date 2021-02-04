@@ -61,7 +61,7 @@ devtools::install_github("omarwagih/ggseqlogo")
 If you get a corrupted download (lazy-load database corrupt error), download the library again setting ```FORCE = TRUE```, ie.
 
 ```
-devtools::install_github("omarwagih/ggseqlogo", force=TRUE)
+devtools::install_github("omarwagih/ggseqlogo", force = TRUE)
 ```
 
 ## Configuring Rstudio to run in an anaconda environment:
@@ -72,7 +72,7 @@ devtools::install_github("omarwagih/ggseqlogo", force=TRUE)
 
 If you don't have an anaconda build in the list (with its green circular logo), you can build one at the same time as installing one of your dependencies.
 ```
-conda_install('my_environment_name', packages = 'keras')
+conda_install('"my_environment_name", packages = "keras")
 ```
 
 ## Python diagnostics
@@ -84,9 +84,9 @@ The majority of dependencies will be installed when you create an anaconda envir
 Manually change your h5py version to 2.10.0 - This is essential!
 
 ```
-conda_install('re-reticulate', packages = 'matplotlib')
-conda_install('re-reticulate', packages = 'scikit-learn')
-conda_install('re-reticulate', packages = 'keras')
+conda_install("re-reticulate", packages = "matplotlib")
+conda_install("re-reticulate", packages = "scikit-learn")
+conda_install("re-reticulate", packages = "keras")
 ```
 
 ## Custom dataset errors
