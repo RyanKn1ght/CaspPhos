@@ -4,7 +4,7 @@ This program looks for, and visualises, phosphate sites within a set of caspase 
 
 # Tech and Frameworks
 
-Built in R and Python in the form of an integrated Rmarkdown script, ```main.md```.
+Built in R and Python in the form of an integrated Rmarkdown script, ```main.rmd```.
 
 This is machine learning intensive, so dependencies can be acquired most easily by configuring a conda environment (see below). Anaconda is built with mathematical-oriented tools not included in standard python installs, such as numpy and pandas. DeepPhos, from its [GitHub repository](https://github.com/USTC-HIlab/DeepPhos), does not run, but it has been modified and repaired to work here.
 
