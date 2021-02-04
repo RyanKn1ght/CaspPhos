@@ -20,9 +20,10 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 ```{r requirements}
-library(tidyverse) #Data manipulation
+library(tidyverse) #Data manipulation.
 library(reticulate) #Doesn't need to be called to run, but does to knit.
-library(ggseqlogo) #Draws sequence logos
+library(ggseqlogo) #Draws sequence logos.
+library(gridExtra) # Presents plots in grid format.
 
 #Selects data to be passed to the phosphate site machine learning model.
 source("libraries/preparesites.R") 
@@ -44,33 +45,37 @@ For our previous work (unpublished data), we compiled a database of inflammatory
 
 # Methods and Results
 
-## Phosphate site analysis
-
-The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
+<!-- Initial tidying of data -->
 
 ```{r tidy-phosphate}
 
 #Load raw format substrate table. Rename position notation with numbers to identify locations within the shorter sequence better.
 file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
-names(substrates)[c(12:20, 22, 24:33)] <- seq(1,20)
+names(substrates)[c(12:20, 22, 24:33)] <- seq(1, 20)
 
-# Tidy up the table names
-# Reduce table down to a list of potential phosphorylation sites (S,T,Y) in deepphos format.
+#Remove columns unnecessary for this application, Tidy up the table names
 # Strips whitespace that is in the sequence by accident in the standard data set.
 # Capitalise sequence in the event that there are some lowercase letters included by mistake.
 # Short sequences with empty spaces (-) cut out as removing - will mis-align them.
-potential_sites <- substrates %>% 
+# Default dataset contains extra NAs rows in cleaved_by, so they should be removed.
+sequence_table <- substrates %>% 
   select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
+  rename(sequence = concatenated_p10_p10_sequence) %>% 
+  mutate(sequence = str_replace(sequence, " ", "")) %>%
+  mutate(sequence = toupper(sequence)) %>%
+  filter(!(grepl("-", sequence))) %>%
+  na.omit()
+
+#Reduce table down to a list of potential phosphorylation sites (S,T,Y).
+# Rearrange into deepphos format.
+# This is a second dataset as sequence_table can be used for other things.
+potential_sites <- sequence_table %>%
   pivot_longer(names_to = "site", 
                values_to = "residue", 
                cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
   relocate(site, .after = uniprot_id) %>%
-  filter(residue %in% c("S","T","Y")) %>%
-  rename(sequence = concatenated_p10_p10_sequence) %>% 
-  mutate(sequence = str_replace(sequence, " ", "")) %>%
-  mutate(sequence = toupper(sequence)) %>%
-  filter(!(grepl("-", sequence))) 
+  filter(residue %in% c("S", "T", "Y")) 
   
 
 #The prediction algorithm handles sites in two groups, (S and T) and Y.
@@ -83,6 +88,44 @@ write.table(potential_sites_Y, "./data/processed/all_potential_Y.csv", quote = F
 
 ```
 
+## Visualisation of consensus sequence features
+
+``` {r inline-quantities}
+
+```
+
+<!-- Figure references for visualisation segment -->
+
+(ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry. Top left: all Caspases (x), top right: Caspase-4 (y), bottom left: human Caspase-1, bottom right: murine Caspase-1.
+
+<!-- End references segement -->
+
+The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all inflammatory caspase substrates (x), human Caspase-1 substrates (y), murine Caspase-1 substrates (z) and the human-exclusive Caspase-4 substrates (a). Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. Visualisations are shown in Figure \@ref(fig:consensus-fig).
+
+```{r consensus-fig, fig.width=6, fig.cap = "(ref:generic-cons-fig)"}
+
+#Categorise plots to represent in consensus sequences.
+casp1_H_data <- sequence_table %>% filter(cleaved_by == 1 & species == "H")
+casp1_M_data <- sequence_table %>% filter(cleaved_by == 1 & species == "M")
+casp4_data <- sequence_table %>% filter(cleaved_by == 4)
+
+#Draw plots for consensus sequences. Standard presentation is using bits, but there is not much of a pattern here (that's the focus of the work anyway) so probability presentation looks a lot better.
+all_casp <- ggseqlogo(sequence_table$sequence, seq_type = "aa", method = "prob")
+casp1_H <- ggseqlogo(casp1_H_data$sequence, seq_type = "aa", method = "prob")
+casp1_M <- ggseqlogo(casp1_M_data$sequence, seq_type = "aa", method = "prob")
+casp4 <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob")
+
+#Present consensus sequence plots in grid.
+grid.arrange(all_casp, casp4, casp1_H, casp1_M, ncol=2)
+
+```
+
+
+
+## Phosphate site analysis
+
+The limited history of proteomic analysis performed on apopototic caspases suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012].
+
 Data was tidied into an amenable format for analysis with phosphate site prediction software, DeepPhos [@luo_2019] which is capable of identification of previously unknown phosphate sites.
 
 ```{python deep-phos}
@@ -91,27 +134,13 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #Load forked/modified deepphos code
-from deepphos import predict
+#from deepphos import predict
 
 #Run deepphos predictions
-predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
-predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
+#predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
+#predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
 
 ```
-
-Data was presented using ggseqlogo [@wagih_2017].
-
-Ranks between 0 and 1
-
-```{r consensus}
-
-data(ggseqlogo_sample)
-
-ggseqlogo(seqs_dna$MA0001.1)
-
-
-```
-
 
 # References
 
