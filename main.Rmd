@@ -90,37 +90,47 @@ write.table(potential_sites_Y, "./data/processed/all_potential_Y.csv", quote = F
 
 ## Visualisation of consensus sequence features
 
-``` {r inline-quantities}
+<!-- Part 1: General consensus sequence  -->
 
+``` {r consensus-calculations}
+#Categorise plots to represent in consensus sequences.
+casp1H_data <- sequence_table %>% filter(cleaved_by == 1 & species == "H")
+casp1M_data <- sequence_table %>% filter(cleaved_by == 1 & species == "M")
+casp4_data <- sequence_table %>% filter(cleaved_by == 4)
+
+casp_num <- nrow(sequence_table)
+casp1H_num <- nrow(casp1H_data)
+casp1M_num <- nrow(casp1M_data)
+casp4_num <- nrow(casp4_data)
 ```
 
 <!-- Figure references for visualisation segment -->
 
-(ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry. Top left: all Caspases (x), top right: Caspase-4 (y), bottom left: human Caspase-1, bottom right: murine Caspase-1.
+(ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry. Top left: all Caspases (`r casp_num` sites), top right: Caspase-4 (`r casp4_num`), bottom left: human Caspase-1 (`r casp1H_num`), bottom right: murine Caspase-1 (`r casp1M_num`).
 
 <!-- End references segement -->
 
-The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all inflammatory caspase substrates (x), human Caspase-1 substrates (y), murine Caspase-1 substrates (z) and the human-exclusive Caspase-4 substrates (a). Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. Visualisations are shown in Figure \@ref(fig:consensus-fig).
+The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. 
 
-```{r consensus-fig, fig.width=6, fig.cap = "(ref:generic-cons-fig)"}
+Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human-exclusive Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. Visualisations are shown in Figure \@ref(fig:consensus-fig).
 
-#Categorise plots to represent in consensus sequences.
-casp1_H_data <- sequence_table %>% filter(cleaved_by == 1 & species == "H")
-casp1_M_data <- sequence_table %>% filter(cleaved_by == 1 & species == "M")
-casp4_data <- sequence_table %>% filter(cleaved_by == 4)
+```{r consensus-fig, out.width = "100%", fig.cap = "(ref:generic-cons-fig)"}
 
 #Draw plots for consensus sequences. Standard presentation is using bits, but there is not much of a pattern here (that's the focus of the work anyway) so probability presentation looks a lot better.
-all_casp <- ggseqlogo(sequence_table$sequence, seq_type = "aa", method = "prob")
-casp1_H <- ggseqlogo(casp1_H_data$sequence, seq_type = "aa", method = "prob")
-casp1_M <- ggseqlogo(casp1_M_data$sequence, seq_type = "aa", method = "prob")
+all_casp <- ggseqlogo(sequence_table$sequence, seq_type = "aa", method = "prob") +
+  theme()
+casp1H <- ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob")
+casp1M <- ggseqlogo(casp1M_data$sequence, seq_type = "aa", method = "prob")
 casp4 <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob")
 
 #Present consensus sequence plots in grid.
-grid.arrange(all_casp, casp4, casp1_H, casp1_M, ncol=2)
+grid.arrange(all_casp, casp4, casp1H, casp1M, ncol=2)
 
 ```
 
+<!-- Part 2: Example consensus sequences under different properties -->
 
+The.... words and stuff go here
 
 ## Phosphate site analysis
 
@@ -143,4 +153,5 @@ warnings.filterwarnings('ignore')
 ```
 
 # References
+<!-- Comment required for references section to number -->
 
