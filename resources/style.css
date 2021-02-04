@@ -1,3 +1,9 @@
+/* Configure font sizes for headers and caption formatting*/
 h1 { font-size: 26px; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; }
+.caption {
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
