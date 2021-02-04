@@ -24,6 +24,7 @@ library(tidyverse) #Data manipulation.
 library(reticulate) #Doesn't need to be called to run, but does to knit.
 library(ggseqlogo) #Draws sequence logos.
 library(gridExtra) # Presents plots in grid format.
+library(patchwork) # Presents plots in grid format.
 
 #Selects data to be passed to the phosphate site machine learning model.
 source("libraries/preparesites.R") 
@@ -106,15 +107,15 @@ casp4_num <- nrow(casp4_data)
 
 <!-- Figure references for visualisation segment -->
 
-(ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry. Top left: all Caspases (`r casp_num` sites), top right: Caspase-4 (`r casp4_num`), bottom left: human Caspase-1 (`r casp1H_num`), bottom right: murine Caspase-1 (`r casp1M_num`).
+(ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry. A: all Caspases (`r casp_num` sites), B: Caspase-4 (`r casp4_num`), C: human Caspase-1 (`r casp1H_num`), D: murine Caspase-1 (`r casp1M_num`).
 
 <!-- End references segement -->
 
 The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. 
 
-Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human-exclusive Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. Visualisations are shown in Figure \@ref(fig:consensus-fig).
+Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human-exclusive Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. 
 
-```{r consensus-fig, out.width = "100%", fig.cap = "(ref:generic-cons-fig)"}
+```{r consensus-fig, fig.width = 6, fig.cap = "(ref:generic-cons-fig)"}
 
 #Draw plots for consensus sequences. Standard presentation is using bits, but there is not much of a pattern here (that's the focus of the work anyway) so probability presentation looks a lot better.
 all_casp <- ggseqlogo(sequence_table$sequence, seq_type = "aa", method = "prob") +
@@ -123,14 +124,16 @@ casp1H <- ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob")
 casp1M <- ggseqlogo(casp1M_data$sequence, seq_type = "aa", method = "prob")
 casp4 <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob")
 
-#Present consensus sequence plots in grid.
-grid.arrange(all_casp, casp4, casp1H, casp1M, ncol=2)
+#Present consensus sequence plots in grid using patchwork.
+((all_casp + casp4) / (casp1H + casp1M)) / guide_area() +
+  plot_annotation(tag_levels = "A") +
+  plot_layout(guides = 'collect') 
 
 ```
 
 <!-- Part 2: Example consensus sequences under different properties -->
 
-The.... words and stuff go here
+Visualisations shown in Figure \@ref(fig:consensus-fig) demonstrate the lack of an observed consensus sequence 
 
 ## Phosphate site analysis
 
@@ -153,5 +156,5 @@ warnings.filterwarnings('ignore')
 ```
 
 # References
-<!-- Comment required for references section to number -->
+<!-- Comment required for references section to number in knitted output -->
 

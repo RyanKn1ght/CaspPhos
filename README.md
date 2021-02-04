@@ -32,7 +32,7 @@ scikit-learn = 0.24.1
 
 [ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
 
-gridExtra
+patchwork
 
 knitr
 
