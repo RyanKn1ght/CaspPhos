@@ -209,11 +209,27 @@ predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
 
 ```{r phosphate}
 
-file <- "./data/processed/general_ST_prediction_phosphorylation.txt"
-ST_sites <- read.table(file) %>% janitor::clean_names()
+#Read in generated data 
+fileST <- "./data/processed/general_ST_prediction_phosphorylation.txt"
+fileY <- "./data/processed/general_Y_prediction_phosphorylation.txt"
 
+#ST and Y sets have to be separated for analysis, they can be put back together now.
+# Filter by score (0-1) cut off point. 0.5 is standard.
+processed_sites <- read.table(fileST) %>%
+  full_join(read.table(fileY)) %>%
+  setNames(c("Accession", "Pos", "Score")) %>%
+  filter(Score >= 0.5)
+
+#Count sequence positions that have a phosphorylable residue with score > cutoff.
+# Obtain his number as a proportion of total substrates.
+site_frequency <- processed_sites %>% 
+  select(Pos) %>%
+  count() %>%
+  mutate(proportion = freq / casp_num)
+
+
+#
 ```
-
 
 
 
