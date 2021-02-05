@@ -27,6 +27,7 @@ library(ggseqlogo) #Draws sequence logos.
 library(patchwork) # Presents plots in grid format.
 library(plyr) #Needs call for dplyr::count to work with lapply.
 
+
 #Selects data to be passed to the phosphate site machine learning model.
 source("libraries/preparesites.R") 
 #Counts species for conservation chart
@@ -156,9 +157,9 @@ casp4 <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob")
 
 <!-- Part 2: Example consensus sequences under different properties -->
 
-Visualisations shown in Figure \@ref(fig:consensus-fig) demonstrate the lack of an apparent pattern in the consensus sequence, with the exception of an aspartate (D), or minorly glutamate (E), residue at the cleavage site at position 10. 
+Visualisations shown in Figure \@ref(fig:consensus-fig) demonstrate the lack of an apparent pattern in the consensus sequence, with the exception of an aspartate (**D**), or minorly glutamate (**E**), residue at the cleavage site at position 10. 
 
-It should be noted that the studies comprising this data set did observe some sites with other residues in this position, though they were deliberately excluded from the compiled data set as there is insufficient experimental evidence for cleavage at sites other than D and E. These observations could reasonably be due to experimental artefacts such as contamination with other proteases such as cathepsins. 
+It should be noted that the studies comprising this data set did observe some sites with other residues in this position, though they were deliberately excluded from the compiled data set as there is insufficient experimental evidence for cleavage at sites other than **D** and **E**. These observations could reasonably be due to experimental artefacts such as contamination with other proteases such as cathepsins. 
 
 Regardless, the observed results diverge greatly from the traditional dogma of DEVD cleavage sites for caspases that would lie at P7-P10 in Figure \@ref(fig:consensus-fig). Site chemistry also follows no discernible pattern, nor does a hydrophobicity scale of human Caspase-1 sites, the largest sample in the data set (Figure  \@ref(fig:characteristics-fig)).
 
@@ -234,10 +235,17 @@ processed_sites <- read.table(fileST) %>%
 
 #Count sequence positions that have a phosphorylable residue with score > cutoff.
 # Obtain his number as a proportion of total substrates.
+# This will be put in a bar chart to show the % of sites in that position that are phosphorylated
 site_frequency <- processed_sites %>% 
   select(Pos) %>%
   count() %>%
   mutate(proportion = freq / substrates_in_deepphos)
+
+#Get average scores to make a chart comparing phosphorylation strength in each position.
+# Also get standard error by anonymous function as it's only done once. 
+weighted_scores <- processed_sites %>% 
+  aggregate(Score ~ Pos, ., mean)
+weighted_scores$se <- aggregate(Score ~ Pos, processed_sites, function(x) sd(x) /sqrt(length(x)))[2]
 
 #Numbers for inline code
 mean_frequency <- site_frequency$proportion %>% mean() %>% round(3)
@@ -246,24 +254,40 @@ max_position <- site_frequency[site_frequency$proportion == max(site_frequency$p
 freq_sd <- site_frequency$proportion %>% sd() %>% round(3)
 ```
 
-Data was tidied into an amenable format for analysis with a modified fork of phosphate site prediction model, DeepPhos which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of `r phosphate_threshold` (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
+Data was tidied into an amenable format for analysis with a modified fork of phosphate site prediction model, DeepPhos which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of **`r phosphate_threshold`** (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
 
-Position 10 represents the cleavage site (D/E), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency` (n = `r substrates_in_deepphos`, s.d. `r freq_sd`), the greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
+Position 10 represents the cleavage site (**D**/**E**), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency` (n = `r substrates_in_deepphos`, s.d. `r freq_sd`), the greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
 
-```{r frequency-fig, fig.cap = "(ref:frequency-figure)"}
+```{r frequency-fig, fig.width = 6, fig.height = 2, fig.cap = "(ref:frequency-figure)"}
 
+#Draw frequency bar plot. expand makes the bars start on the X axis.
 frequency_graph <- ggplot(site_frequency, aes(x = Pos, y = proportion)) +
-  geom_bar(stat = "identity", fill="#85ca5d") +
+  geom_bar(stat = "identity", fill="#85ca5d", color = "black") +
   theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   xlab("Position") +
   ylab("Proportion") +
-  scale_x_continuous(breaks = seq(1, 20, by = 1))
+  scale_x_continuous(breaks = seq(1, 20, by = 1)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 0.4))
 
-frequency_graph
+#Draw mean score evaluation bar plot.
+score_graph <- ggplot(weighted_scores, aes(x = Pos, y = Score)) +
+  geom_bar(stat = "identity", fill="#E0BBE4", color = "black") +
+  geom_errorbar(aes(ymin = Score - se$Score, ymax = Score + se$Score), width=.2,
+                 position=position_dodge(.9)) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  xlab("Position") +
+  ylab("Mean Score") +
+  scale_x_continuous(breaks = seq(1, 20, by = 1)) +
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 1, by = 0.2), limits = c(0, 1))
+  
+frequency_graph + score_graph
 ```
 
+Also shown in Figure \@ref(fig:frequency-fig)
 
+indication of the accuracy of computation of the mean.
 
 # References
 <!-- Comment required for references section to number in knitted output -->
