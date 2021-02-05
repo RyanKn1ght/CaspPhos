@@ -25,9 +25,12 @@ library(tidyverse) #Data manipulation.
 library(reticulate) #Doesn't need to be called to run, but does to knit.
 library(ggseqlogo) #Draws sequence logos.
 library(patchwork) # Presents plots in grid format.
+library(plyr) #Needs call for dplyr::count to work with lapply.
 
 #Selects data to be passed to the phosphate site machine learning model.
 source("libraries/preparesites.R") 
+#Counts species for conservation chart
+source("libraries/countspecies.R")
 
 #Even if python is configured to anaconda in settings, this line must be run in order to knit.
 #You probably don't have an environment called this, see readme troubleshooting for conda guidance.
@@ -48,30 +51,38 @@ For our previous work (unpublished data), we compiled a database of inflammatory
 
 <!-- Initial tidying of data -->
 
-```{r tidy-phosphate}
+```{r tidy}
 
 #Load raw format substrate table. Rename position notation with numbers to identify locations within the shorter sequence better.
 file <- "./data/raw/caspase_substrates.csv"
 substrates <- read.csv(file) %>% janitor::clean_names()
 names(substrates)[c(12:20, 22, 24:33)] <- seq(1, 20)
 
-#Remove columns unnecessary for this application, Tidy up the table names
+#Remove columns unnecessary for this application, Tidy up the table names.
+# Must call dplyr:: because of confusion with plyr rename (I think.)
+sequence_table <- substrates %>% 
+  select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, 
+         concatenated_p10_p10_sequence, human, ape_pantr, mouse, zebrafish_danre) %>%
+  dplyr::rename(sequence = concatenated_p10_p10_sequence) %>%
+
 # Strips whitespace that is in the sequence by accident in the standard data set.
 # Capitalise sequence in the event that there are some lowercase letters included by mistake.
-# Short sequences with empty spaces (-) cut out as removing - will mis-align them.
-# Default dataset contains extra NAs rows in cleaved_by, so they should be removed.
-sequence_table <- substrates %>% 
-  select(uniprot_id, species, cleaved_by, `1`:`9`, `10`, `11`:`20`, concatenated_p10_p10_sequence) %>%
-  rename(sequence = concatenated_p10_p10_sequence) %>% 
   mutate(sequence = str_replace(sequence, " ", "")) %>%
   mutate(sequence = toupper(sequence)) %>%
+  
+# Short sequences with empty spaces (-) cut out as removing - will mis-align them.
+# Default dataset contains extra NAs rows in cleaved_by, so they should be removed. 
   filter(!(grepl("-", sequence))) %>%
   na.omit()
+
+
+
 
 #Reduce table down to a list of potential phosphorylation sites (S,T,Y).
 # Rearrange into deepphos format.
 # This is a second dataset as sequence_table can be used for other things.
 potential_sites <- sequence_table %>%
+  select(-c(human, ape_pantr, mouse, zebrafish_danre)) %>%
   pivot_longer(names_to = "site", 
                values_to = "residue", 
                cols = c(`1`:`9`, `10`, `11`:`20`)) %>%
@@ -89,7 +100,7 @@ write.table(potential_sites_Y, "./data/processed/all_potential_Y.csv", quote = F
 
 ```
 
-## Visualisation of consensus sequence features
+## Visualisation of consensus sequence characteristics
 
 <!-- Part 1: General consensus sequence  -->
 
@@ -99,6 +110,7 @@ casp1H_data <- sequence_table %>% filter(cleaved_by == 1 & species == "H")
 casp1M_data <- sequence_table %>% filter(cleaved_by == 1 & species == "M")
 casp4_data <- sequence_table %>% filter(cleaved_by == 4)
 
+#Quantity numbers for inline insertion to text: keeps values correct if data set changes.
 casp_num <- nrow(sequence_table)
 casp1H_num <- nrow(casp1H_data)
 casp1M_num <- nrow(casp1M_data)
@@ -111,11 +123,13 @@ casp4_num <- nrow(casp4_data)
 
 (ref:generic-h-fig) Representation of consensus accross `r casp1H_num` human Caspase-1 cleavage sites, coloured by relative hydrophobicity.
 
+(ref:species-figure) Representation of assessment of substrate P4-P1 conservation in model organsisms (Ape = *P. troglodytes*, Human =  *H. sapiens*, Mouse = *M. musculus*, Zebrafish = *D. rerio*. A) `r casp1H_num` sites cleaved by human Caspase-1. B) `r casp1M_num` sites cleaved by murine Caspase-1.
+
 <!-- End references segement -->
 
 The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. 
 
-Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human-exclusive Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. 
+Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. 
 
 ```{r consensus-fig, fig.width = 6, out.width = "70%", fig.cap = "(ref:generic-cons-fig)"}
 
@@ -141,7 +155,7 @@ It should be noted that the studies comprising this data set did observe some si
 
 Regardless, the observed results diverge greatly from the traditional dogma of DEVD cleavage sites for caspases that would lie at P7-P10 in Figure \@ref(fig:consensus-fig). Site chemistry also follows no discernible pattern, nor does a hydrophobicity scale of human Caspase-1 sites, the largest sample in the data set (Figure  \@ref(fig:characteristics-fig)).
 
-``` {r characteristics-fig, out.width = "50%", fig.cap = "(ref:generic-h-fig)"}
+``` {r characteristics-fig, out.width = "60%", fig.cap = "(ref:generic-h-fig)"}
 
 #Present human caspase 1 by hydrophobicity.
 ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob", col_scheme = "hydrophobicity")
@@ -149,10 +163,30 @@ ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob", col_scheme = "
 ```
 
 
+Rationally, there is a factor other than local primary sequence chemistry explaining the identification of cleavage sites by inflammatory caspases, such as higher-order protein structure of post-translational modification.
+
+Visualisation of the consistency of substrate P4-P1 residues between model species (Figure \@ref(fig:species-fig)) shows a high degree of conservation. 
+
+This suggests that the amino acid residues surrounding the cleavage site are important, despite the general inconsistency of their chemistry (Figure \@ref(fig:consensus-fig)). Post-translational modifications are therefore an ideal candidate for investigation.
+
+
+``` {r species-fig, fig.cap = "(ref:species-figure)"}
+
+#Custom function to generate stacked bar charts representing sequence conservation.
+casp1H_count <- count_species(casp1H_data)
+casp1M_count <- count_species(casp1M_data)
+
+#Present species diversity plots together using patchwork
+casp1H_count + casp1M_count +
+  plot_annotation(tag_levels = "A") +
+  plot_layout(guides = 'collect') 
+
+  
+```
+
+
 
 ## Phosphate site analysis
-
-Rationally, there is a factor other than local primary sequence chemistry explaining the identification of cleavage sites by inflammatory caspases, such as higher-order protein structure of post-translational modification.
 
 Some proteomic analysis performed on apopototic caspases has suggested that phosphorylation at cleavage sites can impact the efficiency of proteolysis [@dix_2012]. It is possible that post-translational phosphorylation, which occurs at Serine (**S**), Threonine, (**T**) and Tyrosine (**Y**) residues.
 
@@ -165,13 +199,25 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #Load forked/modified deepphos code
-#from deepphos import predict
+from deepphos import predict
 
 #Run deepphos predictions
-#predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
-#predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
+predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
+predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
 
 ```
+
+```{r phosphate}
+
+file <- "./data/processed/general_ST_prediction_phosphorylation.txt"
+ST_sites <- read.table(file) %>% janitor::clean_names()
+
+```
+
+
+
+
+
 
 # References
 <!-- Comment required for references section to number in knitted output -->

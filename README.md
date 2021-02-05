@@ -34,6 +34,8 @@ scikit-learn = 0.24.1
 
 patchwork
 
+plyr
+
 knitr
 
 reticulate
