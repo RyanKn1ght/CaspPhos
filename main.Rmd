@@ -17,7 +17,6 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE,
                       results = FALSE,
                       fig.align = "center",
-                      out.width = "70%",
                       fig.retina = 3)
 ```
 
@@ -118,7 +117,7 @@ The acquired database of inflammatory caspase substrates was tidied into an amen
 
 Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human-exclusive Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. 
 
-```{r consensus-fig, fig.width = 6, fig.cap = "(ref:generic-cons-fig)"}
+```{r consensus-fig, fig.width = 6, out.width = "70%", fig.cap = "(ref:generic-cons-fig)"}
 
 #Draw plots for consensus sequences. Standard presentation is using bits, but there is not much of a pattern here (that's the focus of the work anyway) so probability presentation looks a lot better.
 all_casp <- ggseqlogo(sequence_table$sequence, seq_type = "aa", method = "prob") +
@@ -142,7 +141,7 @@ It should be noted that the studies comprising this data set did observe some si
 
 Regardless, the observed results diverge greatly from the traditional dogma of DEVD cleavage sites for caspases that would lie at P7-P10 in Figure \@ref(fig:consensus-fig). Site chemistry also follows no discernible pattern, nor does a hydrophobicity scale of human Caspase-1 sites, the largest sample in the data set (Figure  \@ref(fig:characteristics-fig)).
 
-``` {r characteristics-fig, fig.cap = "(ref:generic-h-fig)"}
+``` {r characteristics-fig, out.width = "50%", fig.cap = "(ref:generic-h-fig)"}
 
 #Present human caspase 1 by hydrophobicity.
 ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob", col_scheme = "hydrophobicity")
