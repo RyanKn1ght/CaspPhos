@@ -9,7 +9,7 @@ output:
 bibliography: resources/references.bib
 ---
 
-<!-- The analysis does knit, but takes a while. Below: R environment setup -->
+<!-- The analysis does knit, but takes a while because of all the extensive. Below: R environment setup -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
@@ -197,7 +197,9 @@ casp1H_count + casp1M_count +
 
 <!-- Figure references for phosphate segment -->
 
-(ref:frequency-figure) Plot of prevelance of residues with reasonable phosphorylation prediction scores (threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. Position 10 is the cleavage site (D/E). 
+(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of phosphate prediction scores.
+
+Position 10 is the cleavage site (D/E). B) 
 
 <!-- End references section -->
 
@@ -238,17 +240,15 @@ site_frequency <- processed_sites %>%
   mutate(proportion = freq / substrates_in_deepphos)
 
 #Numbers for inline code
-mean_frequency <- mean(site_frequency$proportion) %>% round(3)
-max_frequency <- max(site_frequency$proportion) %>% round(3)
+mean_frequency <- site_frequency$proportion %>% mean() %>% round(3)
+max_frequency <- site_frequency$proportion %>% max() %>% round(3)
 max_position <- site_frequency[site_frequency$proportion == max(site_frequency$proportion),]$Pos
-
+freq_sd <- site_frequency$proportion %>% sd() %>% round(3)
 ```
 
 Data was tidied into an amenable format for analysis with a modified fork of phosphate site prediction model, DeepPhos which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of `r phosphate_threshold` (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
 
-Position 10 represents the cleavage site (D/E), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency`. The greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
-
-
+Position 10 represents the cleavage site (D/E), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency` (n = `r substrates_in_deepphos`, s.d. `r freq_sd`), the greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
 
 ```{r frequency-fig, fig.cap = "(ref:frequency-figure)"}
 
