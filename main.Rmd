@@ -198,7 +198,7 @@ casp1H_count + casp1M_count +
 
 <!-- Figure references for phosphate segment -->
 
-(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of phosphate prediction scores.
+(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of mean phosphate prediction scores for each position. Error bars show the standard error of the mean.
 
 Position 10 is the cleavage site (D/E). B) 
 
@@ -281,13 +281,19 @@ score_graph <- ggplot(weighted_scores, aes(x = Pos, y = Score)) +
   ylab("Mean Score") +
   scale_x_continuous(breaks = seq(1, 20, by = 1)) +
   scale_y_continuous(expand = c(0, 0), breaks = seq(0, 1, by = 0.2), limits = c(0, 1))
-  
-frequency_graph + score_graph
+
+#Attach the graphs together horizontally using patchwork. Annotate them A and B to match the caption. 
+frequency_graph + score_graph +
+  plot_annotation(tag_levels = "A")
 ```
 
-Also shown in Figure \@ref(fig:frequency-fig)
+Figure \@ref(fig:frequency-fig) also contains a representation of relative strengths of potential phosphorylation sites between positions. Standard errors of the mean were calculated and depicted in error bars as an indication of the accuracy of computation of the mean. Overlapping standard error bars suggest that differences in strength between sites is either not, or minimally, statistically significant (though statistical testing beyond visualization would be required to evaluate this). 
 
-indication of the accuracy of computation of the mean.
+It appears that out of the phosphate site predictions above quality threshold no position has a strong or weak phosphorylation tendency compared to the other positions (with the understandable exception of the cleavage point), which was unexpected. However, this visualisation did show that potential phosphorylation sites have reasonably high prediction scores compared to the commonly applied quality threshold of 0.5. 
+
+## tSNE stochastic stuff
+
+bruh :(
 
 # References
 <!-- Comment required for references section to number in knitted output -->
