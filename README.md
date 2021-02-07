@@ -30,21 +30,29 @@ scikit-learn = 0.24.1
 
 ### R Packages
 
+bookdown
+
+fastDummies
+
 [ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
 
 patchwork
 
-plyr
+plyr (in addition to tidyverse dplyr)
+
+janitor
 
 knitr
 
 reticulate
 
+Rtsne
+
 tidyverse
 
 # Credits
 
-Thank you to Fenglin Luo et. al. and the USTCHI lab for their work on [DeepPhos](https://academic.oup.com/bioinformatics/article/35/16/2766/5270665), and Omar Wagih for developing [ggseqlogo](https://academic.oup.com/bioinformatics/article/33/22/3645/3980251).
+Particular thanks to Fenglin Luo et. al. and the USTCHI lab for their work on [DeepPhos](https://academic.oup.com/bioinformatics/article/35/16/2766/5270665), and Omar Wagih for developing [ggseqlogo](https://academic.oup.com/bioinformatics/article/33/22/3645/3980251).
 
 # License
 

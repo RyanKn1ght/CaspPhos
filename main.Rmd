@@ -1,6 +1,6 @@
 ---
-title: "Caspase Substrate Analysis"
-author: "Ryan Knight"
+title: "Visualisation of Inflammatory Caspase Substrate sites"
+author: "Y3867228"
 date: "24/01/2021"
 output: 
   bookdown::html_document2:
@@ -26,7 +26,7 @@ library(reticulate) #Doesn't need to be called to run, but does to knit.
 library(ggseqlogo) #Draws sequence logos.
 library(patchwork) # Presents plots in grid format.
 library(plyr) #Needs call for dplyr::count to work with lapply.
-
+library(Rtsne)
 
 #Selects data to be passed to the phosphate site machine learning model.
 source("libraries/preparesites.R") 
@@ -198,9 +198,7 @@ casp1H_count + casp1M_count +
 
 <!-- Figure references for phosphate segment -->
 
-(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of mean phosphate prediction scores for each position. Error bars show the standard error of the mean.
-
-Position 10 is the cleavage site (D/E). B) 
+(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. Position 10 is the cleavage site (D/E) A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of mean phosphate prediction scores for each position. Error bars show the standard error of the mean.
 
 <!-- End references section -->
 
@@ -291,9 +289,33 @@ Figure \@ref(fig:frequency-fig) also contains a representation of relative stren
 
 It appears that out of the phosphate site predictions above quality threshold no position has a strong or weak phosphorylation tendency compared to the other positions (with the understandable exception of the cleavage point), which was unexpected. However, this visualisation did show that potential phosphorylation sites have reasonably high prediction scores compared to the commonly applied quality threshold of 0.5. 
 
-## tSNE stochastic stuff
 
-bruh :(
+```{r tsne-figure}
+
+#Build a wide format table built with dummy variables. This is because tSNE does not like non-numerical data.
+#Can't simply key each amino acid (eg. S = 1, T = 2 etc.) as this could be interpreted as a ranked ordering.
+#I.e. the relationship is nominal, and not ordinal.
+#"Solution" is very, very wide table of dummy variables created by 0 or 1 for each amino acid in each position.
+dummy_format <- sequence_table %>%
+  filter(species == "H") %>%
+  select(`1`:`20`, cleaved_by) %>%
+  fastDummies::dummy_cols(remove_selected_columns = TRUE)
+
+
+tsne <- dummy_format %>% 
+  Rtsne(perplexity = 5, check_duplicates = FALSE)
+  
+tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>% 
+    ggplot(aes(x = X1, y = X2, color = factor(type))) +
+    theme_bw() + 
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+    scale_colour_manual(name = "Caspase", values = c("#00AFBB", "#E7B800", "#FC4E07")) +
+    geom_point(size=1)
+
+tsne_graph
+
+
+```
 
 # References
 <!-- Comment required for references section to number in knitted output -->
