@@ -14,41 +14,28 @@ Pre-rendered example output graphs can be found in ```example-plots``` within th
 
 The output of ```SessionInfo()``` can be found in xyz
 
-### Core
+Markup: *R 4.0
+  *bookdown
+  *fastDummies
+  *[ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
+  *patchwork
+  *plyr (in addition to tidyverse's dplyr)
+  *janitor
+  *knitr
+  *reticulate
+  *Rtsne
+  *tidyverse
 
-R 4.0
+Python 3.7
+  * anaconda
+  * h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
+  * keras = 2.3.1
+  * scikit-learn = 0.24.1
 
-Python 3.7 - Anaconda 
-
-### Python Libraries 
-
-h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
-
-keras = 2.3.1
-
-scikit-learn = 0.24.1
-
-### R Packages
-
-bookdown
-
-fastDummies
-
-[ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
-
-patchwork
-
-plyr (in addition to tidyverse dplyr)
-
-janitor
-
-knitr
-
-reticulate
-
-Rtsne
-
-tidyverse
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
 
 # Credits
 
