@@ -193,7 +193,7 @@ summary {
 
 <div id="project-and-motivation" class="section level1">
 <h1>Project and Motivation</h1>
-<p>This program looks for, and visualises, phosphate sites within a set of caspase substrate cleavage sites. This is intended to build on my previous work of assembling a database of inflammatory caspase cleavage sites. This is primarily caspase-1, as many more substrates are known than for 4/5 and 11. The tools demonstrated in this script can be adapted to any protease site.</p>
+<p>This script visualises characteristics of caspase substrate cleavage sites. This is intended to build on my previous work of assembling a database of inflammatory caspase cleavage sites. This is primarily caspase-1, as many more substrates are known than for 4/5 and 11. The tools demonstrated in this script can potentially be adapted to any protease site.</p>
 </div>
 <div id="tech-and-frameworks" class="section level1">
 <h1>Tech and Frameworks</h1>
@@ -203,10 +203,22 @@ summary {
 </div>
 <div id="dependencies" class="section level1">
 <h1>Dependencies</h1>
-<p>The output of <code>SessionInfo()</code> can be found in xyz</p>
+<p>The output of <code>SessionInfo()</code> can be found in <code>./resources/sessioninfo</code></p>
 <ul>
-<li><p>R 4.0 <em>bookdown </em>fastDummies <em><a href="https://omarwagih.github.io/ggseqlogo/">ggseqlogo</a> </em>patchwork <em>plyr (in addition to tidyverse’s dplyr) </em>janitor <em>knitr </em>reticulate <em>Rtsne </em>tidyverse</p></li>
-<li><p>Python 3.7</p>
+<li>R 4.0
+<ul>
+<li>bookdown</li>
+<li>fastDummies</li>
+<li>ggseqlogo</li>
+<li>patchwork</li>
+<li>plyr (in addition to tidyverse’s dplyr)</li>
+<li>janitor</li>
+<li>knitr</li>
+<li>reticulate</li>
+<li>Rtsne</li>
+<li>tidyverse</li>
+</ul></li>
+<li>Python 3.7
 <ul>
 <li>anaconda</li>
 <li>h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)</li>

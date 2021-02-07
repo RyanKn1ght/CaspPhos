@@ -9,7 +9,7 @@ output:
 bibliography: resources/references.bib
 ---
 
-<!-- The analysis does knit, but takes a while because of all the extensive. Below: R environment setup -->
+<!-- The analysis does knit, but takes a while. Below: R environment setup -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
@@ -50,7 +50,7 @@ Cellular stress and infection promote the assembly of inflammasome complexes, le
 
 Despite their namesake, there exists substantive evidence that caspases do not exclusively cleave substrates at aspartate residues but have a propensity to act at a variety of other amino acid residues [@seaman_2016], most notably glutamate, possessing similar acidic properties to aspartate.
 
-For our previous work (unpublished data), we compiled a database of inflammatory caspase substrates. As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites.
+For previous work I compiled a database of inflammatory caspase substrates (currently unpublished data). As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites using R 4.0 [@R].
 
 # Methods and Results
 
@@ -123,6 +123,7 @@ casp_num <- nrow(sequence_table)
 casp1H_num <- nrow(casp1H_data)
 casp1M_num <- nrow(casp1M_data)
 casp4_num <- nrow(casp4_data)
+caspH_num <- sequence_table %>% filter(species == "H") %>% nrow()
 ```
 
 <!-- Figure references for visualisation segment -->
@@ -135,9 +136,9 @@ casp4_num <- nrow(casp4_data)
 
 <!-- End references segement -->
 
-The acquired database of inflammatory caspase substrates was tidied into an amenable format, and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. 
+The acquired database of inflammatory caspase substrates was tidied into an amenable format [@tidyverse], and cleavage site consensus interpreted with ggseqlogo [@wagih_2017]. 
 
-Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded. 
+Amino acids were categorised by chemical properties- acidity/basicity, hydrophobicity/polarity, and visualised in four plots: all `r casp_num` inflammatory caspase substrates, `r casp1H_num` human Caspase-1 substrates, `r casp1M_num` murine Caspase-1 substrates and `r casp4_num` human Caspase-4 substrates. Human Caspase-5 and murine Caspase-11 substrate consensus is not presented as few substrates have been recorded in the data set. 
 
 ```{r consensus-fig, fig.width = 6, out.width = "70%", fig.cap = "(ref:generic-cons-fig)"}
 
@@ -252,7 +253,7 @@ max_position <- site_frequency[site_frequency$proportion == max(site_frequency$p
 freq_sd <- site_frequency$proportion %>% sd() %>% round(3)
 ```
 
-Data was tidied into an amenable format for analysis with a modified fork of phosphate site prediction model, DeepPhos which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of **`r phosphate_threshold`** (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
+Data was tidied into an amenable format for analysis with a modified version of phosphate site prediction model, DeepPhos, which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of **`r phosphate_threshold`** (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
 
 Position 10 represents the cleavage site (**D**/**E**), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency` (n = `r substrates_in_deepphos`, s.d. `r freq_sd`), the greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
 
@@ -289,8 +290,20 @@ Figure \@ref(fig:frequency-fig) also contains a representation of relative stren
 
 It appears that out of the phosphate site predictions above quality threshold no position has a strong or weak phosphorylation tendency compared to the other positions (with the understandable exception of the cleavage point), which was unexpected. However, this visualisation did show that potential phosphorylation sites have reasonably high prediction scores compared to the commonly applied quality threshold of 0.5. 
 
+## Site consensus visualised through tSNE
 
-```{r tsne-figure}
+<!-- Figure reference text -->
+
+(ref:tsne-figure) tSNE visualisation of the closest 20 amino acids to `r caspH_num` human caspase cleavage sites. Site chemical character is not taken into account.
+
+<!-- End figure reference text -->
+
+From simple visualisations there did not appear to be defined local consensus sequences for inflammatory caspases
+ (Figure \@ref(fig:consensus-fig)), but this information was not definitive. More rigorous machine-learning based visualisation was performed through the use of t-distributed stochastic neighbour embedding (t-SNE) (Figure \@ref(fig:tsne-fig)) [@rtsne].
+ 
+The most proximal 20 amino acids to `r caspH_num` human caspase cleavage sites were converted to a t-SNE compatible numerical form using the *fastDummies* library [@fd] to generate dummy values. This approach was chosen over a key-based ranking as that would apply a nominal relationship. The assumption of an ordinal relationship is a more accurate method of conferring numerical values to amino acids though not perfect as it doesn't account for similar chemical properties.
+
+```{r tsne-fig, fig.cap = "(ref:tsne-figure)"}
 
 #Build a wide format table built with dummy variables. This is because tSNE does not like non-numerical data.
 #Can't simply key each amino acid (eg. S = 1, T = 2 etc.) as this could be interpreted as a ranked ordering.
@@ -301,21 +314,26 @@ dummy_format <- sequence_table %>%
   select(`1`:`20`, cleaved_by) %>%
   fastDummies::dummy_cols(remove_selected_columns = TRUE)
 
-
+#Carry out the tnse algorithm
 tsne <- dummy_format %>% 
   Rtsne(perplexity = 5, check_duplicates = FALSE)
-  
+
+#Plot tsne results. The graph is different every time because it is stochastic but results always look similar.
 tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>% 
     ggplot(aes(x = X1, y = X2, color = factor(type))) +
     theme_bw() + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-    scale_colour_manual(name = "Caspase", values = c("#00AFBB", "#E7B800", "#FC4E07")) +
+    scale_colour_manual(name = "Caspase", values = c("#00afbb", "#e7b800", "#fc4e07")) +
     geom_point(size=1)
 
 tsne_graph
-
-
 ```
+
+Unexpectedly, tSNE results consistently demonstrate two separate populations, one of caspase-1 substrates, and one of Caspase-4 and 5 susbtrates. Caspase-4 and 5 have long been considered to play similar roles, as the human orthologues of murine Caspase-11.
+
+The primary sequence of cleavage sites alone is sufficient to separate inflammatory caspase substrates, without taking into account amino acid chemistry and post-translational modification. Combined with the lack of an evident single consensus pattern based on amino-acid identity or chemistry (Figures \@ref(fig:consensus-fig) and \@ref(fig:characteristics-fig)), this suggests the existence of complex patterns in the local amino acid sequence of inflammatory caspase cleavage sites that confer their specificity.
+
+
 
 # References
 <!-- Comment required for references section to number in knitted output -->

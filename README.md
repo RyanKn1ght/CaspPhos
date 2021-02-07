@@ -1,6 +1,6 @@
 # Project and Motivation
 
-This program looks for, and visualises, phosphate sites within a set of caspase substrate cleavage sites. This is intended to build on my previous work of assembling a database of inflammatory caspase cleavage sites. This is primarily caspase-1, as many more substrates are known than for 4/5 and 11. The tools demonstrated in this script can be adapted to any protease site.
+This script visualises characteristics of caspase substrate cleavage sites. This is intended to build on my previous work of assembling a database of inflammatory caspase cleavage sites. This is primarily caspase-1, as many more substrates are known than for 4/5 and 11. The tools demonstrated in this script can potentially be adapted to any protease site.
 
 # Tech and Frameworks
 
@@ -12,12 +12,12 @@ Pre-rendered example output graphs can be found in ```example-plots``` within th
 
 # Dependencies
 
-The output of ```SessionInfo()``` can be found in xyz
+The output of ```SessionInfo()``` can be found in ```./resources/sessioninfo.txt```
 
 * R 4.0
   * bookdown
   * fastDummies
-  * [ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
+  * ggseqlogo
   * patchwork
   * plyr (in addition to tidyverse's dplyr)
   * janitor
