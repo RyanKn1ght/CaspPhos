@@ -10,6 +10,7 @@ bibliography: resources/references.bib
 ---
 
 <!-- The analysis does knit, but takes a while. Below: R environment setup -->
+<!-- Word count: 1377 including readme.md, excluding references -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,

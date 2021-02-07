@@ -73,7 +73,7 @@ There is an included python script, ```python-diagnostic.py``` to test any error
 ## The python code does not work:
 The majority of dependencies will be installed when you create an anaconda environment, but those that are likely missing can be installed with the below code. Running one of these statements in your R terminal will create an anaconda environment. Here I have called mine "re-reticulate" but it doesn't really matter. 
 
-Manually change your h5py version to 2.10.0 - This is essential!
+Manually change your h5py version to 2.10.0.
 
 ```
 conda_install("re-reticulate", packages = "matplotlib")
@@ -83,7 +83,7 @@ conda_install("re-reticulate", packages = "keras")
 
 ## Custom dataset errors
 
-If Python throws one of these:
+If Python produces an error like this:
 
 ```
 results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
