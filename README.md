@@ -14,7 +14,7 @@ Pre-rendered example output graphs can be found in ```example-plots``` within th
 
 The output of ```SessionInfo()``` can be found in xyz
 
-Markup: *R 4.0
+*R 4.0
   *bookdown
   *fastDummies
   *[ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
@@ -26,7 +26,7 @@ Markup: *R 4.0
   *Rtsne
   *tidyverse
 
-Python 3.7
+* Python 3.7
   * anaconda
   * h5py == 2.10.0 (While this is an anaconda library it will need version changing MANUALLY.)
   * keras = 2.3.1
