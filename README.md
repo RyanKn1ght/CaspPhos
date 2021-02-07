@@ -1,5 +1,7 @@
 # Project and Motivation
 
+[![DOI](https://zenodo.org/badge/332445826.svg)](https://zenodo.org/badge/latestdoi/332445826)
+
 This script visualises characteristics of caspase substrate cleavage sites. This is intended to build on my previous work of assembling a database of inflammatory caspase cleavage sites. This is primarily caspase-1, as many more substrates are known than for 4/5 and 11. The tools demonstrated in this script can potentially be adapted to any protease site.
 
 # Tech and Frameworks
