@@ -15,16 +15,16 @@ Pre-rendered example output graphs can be found in ```example-plots``` within th
 The output of ```SessionInfo()``` can be found in xyz
 
 * R 4.0
-  *bookdown
-  *fastDummies
-  *[ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
-  *patchwork
-  *plyr (in addition to tidyverse's dplyr)
-  *janitor
-  *knitr
-  *reticulate
-  *Rtsne
-  *tidyverse
+  * bookdown
+  * fastDummies
+  * [ggseqlogo](https://omarwagih.github.io/ggseqlogo/)
+  * patchwork
+  * plyr (in addition to tidyverse's dplyr)
+  * janitor
+  * knitr
+  * reticulate
+  * Rtsne
+  * tidyverse
 
 * Python 3.7
   * anaconda
