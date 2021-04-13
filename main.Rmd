@@ -364,9 +364,11 @@ dummy_format <- sequence_table %>%
   select(`1`:`20`, cleaved_by) %>%
   fastDummies::dummy_cols(remove_selected_columns = TRUE)
 
+#Exclude the corresponding caspase, otherwise the results will be invalid!
+dummy_matrix <- as.matrix(dummy_format[,-1,drop=F])
 #Carry out the tnse algorithm
-tsne <- dummy_format %>% 
-  Rtsne(perplexity = 5, check_duplicates = FALSE, varbose = T)
+tsne <- dummy_matrix %>% 
+  Rtsne(perplexity = 10, check_duplicates = FALSE, pca = FALSE)
 
 #Plot tsne results. The graph is different every time because it is stochastic but results always look similar.
 tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>% 
@@ -380,9 +382,9 @@ tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>%
 tsne_graph
 ```
 
-Unexpectedly, tSNE results consistently demonstrate two separate populations, one of caspase-1 substrates, and one of Caspase-4 and 5 susbtrates. Caspase-4 and 5 have long been considered to play similar roles, as the human orthologues of murine Caspase-11.
+Unexpectedly, tSNE results do not demonstrate separate populations for Caspase 1 and Caspase-4 substrates. 
 
-The primary sequence of cleavage sites alone is sufficient to separate inflammatory caspase substrates, without taking into account amino acid chemistry and post-translational modification. Combined with the lack of an evident single consensus pattern based on amino-acid identity or chemistry (Figures \@ref(fig:consensus-fig) and \@ref(fig:characteristics-fig)), this suggests the existence of complex patterns in the local amino acid sequence of inflammatory caspase cleavage sites that confer their specificity.
+The primary sequence of cleavage sites alone may not be sufficient to separate inflammatory caspase substrates, without taking into account amino acid chemistry and post-translational modification. Combined with the lack of an evident single consensus pattern based on amino-acid identity or chemistry (Figures \@ref(fig:consensus-fig) and \@ref(fig:characteristics-fig)), this suggests the existence of complex patterns in the local amino acid sequence of inflammatory caspase cleavage sites that confer their specificity.
 
 
 
