@@ -22,7 +22,7 @@ from keras.layers.normalization import BatchNormalization
 from keras.regularizers import l2
 import copy
 
-def predict_for_deepphos(train_file_name,sites, predictFrame = 'general',
+def predict_for_deepphos(train_file_name, sites, folder, predictFrame = 'general',
                          hierarchy=None, kinase=None):
     '''
 
@@ -69,8 +69,9 @@ def predict_for_deepphos(train_file_name,sites, predictFrame = 'general',
     #print(ids, position,predictions_t)
     results_ST = np.column_stack((ids, position,predictions_t[:, 1]))
 
+    folderpath = folder
     result = pd.DataFrame(results_ST)
-    result.to_csv("./data/processed/" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)        
+    result.to_csv("./data/processed/" + folderpath + "/" + outputfile + "prediction_phosphorylation.txt", index=False, header=None, sep='\t', quoting=csv.QUOTE_NONNUMERIC)
                   
 
 

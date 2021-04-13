@@ -1,7 +1,7 @@
 ---
 title: "Visualisation of Inflammatory Caspase Substrate sites"
-author: "Y3867228"
-date: "24/01/2021"
+author: "Ryan Knight"
+date: "13/04/2021"
 output: 
   bookdown::html_document2:
     fig_caption: yes
@@ -10,7 +10,7 @@ bibliography: resources/references.bib
 ---
 
 <!-- The analysis does knit, but takes a while. Below: R environment setup -->
-<!-- Word count: 1377 including readme.md, excluding references -->
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
@@ -51,7 +51,7 @@ Cellular stress and infection promote the assembly of inflammasome complexes, le
 
 Despite their namesake, there exists substantive evidence that caspases do not exclusively cleave substrates at aspartate residues but have a propensity to act at a variety of other amino acid residues [@seaman_2016], most notably glutamate, possessing similar acidic properties to aspartate.
 
-For previous work I compiled a database of inflammatory caspase substrates (currently unpublished data). As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites using R 4.0 [@R].
+For previous work we compiled a database of inflammatory caspase substrates (unpublished data). As appreciation is developing for the more nuanced nature of caspase cleavage site consensus sequences, this report aims to provide a reproducible analysis and visualisation of features of caspase cleavage sites using R 4.0 [@R].
 
 # Methods and Results
 
@@ -95,8 +95,11 @@ potential_sites <- sequence_table %>%
   
 
 #The prediction algorithm handles sites in two groups, (S and T) and Y.
-potential_sites_ST <- potential_sites %>% prepare_sites(c("S","T"), sp = "H")
-potential_sites_Y <- potential_sites %>% prepare_sites("Y", sp = "H")
+potential_sites_ST_C1 <- potential_sites %>% prepare_sites(c("S","T"), sp = "H", caspase = "1")
+potential_sites_Y_C1 <- potential_sites %>% prepare_sites("Y", sp = "H", caspase = "1")
+
+potential_sites_ST_C4 <- potential_sites %>% prepare_sites(c("S","T"), sp = "H", caspase = "4")
+potential_sites_Y_C4 <- potential_sites %>% prepare_sites("Y", sp = "H", caspase = "4")
 
 #Calculate number of substrates passed into deepphos. This is useful to draw graphs later.
 substrates_in_deepphos <- sequence_table %>%
@@ -104,8 +107,10 @@ substrates_in_deepphos <- sequence_table %>%
   nrow()
 
 #Write to csv to retain the data.
-write.table(potential_sites_ST, "./data/processed/all_potential_ST.csv", quote = F, sep = ",", col.names = F, row.names = F)
-write.table(potential_sites_Y, "./data/processed/all_potential_Y.csv", quote = F, sep = ",", col.names = F, row.names = F)
+write.table(potential_sites_ST_C1, "./data/processed/Caspase1/all_potential_ST.csv", quote = F, sep = ",", col.names = F, row.names = F)
+write.table(potential_sites_Y_C1, "./data/processed/Caspase1/all_potential_Y.csv", quote = F, sep = ",", col.names = F, row.names = F)
+write.table(potential_sites_ST_C4, "./data/processed/Caspase4/all_potential_ST.csv", quote = F, sep = ",", col.names = F, row.names = F)
+write.table(potential_sites_Y_C4, "./data/processed/Caspase4/all_potential_Y.csv", quote = F, sep = ",", col.names = F, row.names = F)
 
 ```
 
@@ -131,9 +136,9 @@ caspH_num <- sequence_table %>% filter(species == "H") %>% nrow()
 
 (ref:generic-cons-fig) Visualisation of inflammatory Caspase cleavage sites consensus categorised by chemistry, and position 10-11 represents the site of cleavage. A: all Caspases (`r casp_num` sites), B: Caspase-4 (`r casp4_num`), C: human Caspase-1 (`r casp1H_num`), D: murine Caspase-1 (`r casp1M_num`).
 
-(ref:generic-h-fig) Representation of consensus accross `r casp1H_num` human Caspase-1 cleavage sites, coloured by relative hydrophobicity.
+(ref:generic-h-fig) Representation of sequence consensus accross human caspase substrates, coloured by relative hydrophobicity. A) `r casp1H_num` human Caspase-1 cleavage sites, `r casp4_num` Caspase-4 cleavage sites.
 
-(ref:species-figure) Simple representation of assessment of substrate P4-P1 conservation in model organsisms (Ape = *P. troglodytes*, Human =  *H. sapiens*, Mouse = *M. musculus*, Zebrafish = *D. rerio*. A) `r casp1H_num` sites cleaved by human Caspase-1. B) `r casp1M_num` sites cleaved by murine Caspase-1.
+(ref:species-figure) Simple representation of assessment of substrate P4-P1 conservation in model organsisms (Ape = *P. troglodytes*, Human =  *H. sapiens*, Mouse = *M. musculus*, Zebrafish = *D. rerio*. A) `r casp1H_num` sites cleaved by human Caspase-1. B) `r casp1M_num` sites cleaved by murine Caspase-1. Note that the orthologues have not necessarily been determined as substrates for their species' corresponding caspase; the conservation of the substrate is in focus, not the mechanism.
 
 <!-- End references segement -->
 
@@ -161,25 +166,30 @@ casp4 <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob")
 
 Visualisations shown in Figure \@ref(fig:consensus-fig) demonstrate the lack of an apparent pattern in the consensus sequence, with the exception of an aspartate (**D**), or minorly glutamate (**E**), residue at the cleavage site at position 10. 
 
-It should be noted that the studies comprising this data set did observe some sites with other residues in this position, though they were deliberately excluded from the compiled data set as there is insufficient experimental evidence for cleavage at sites other than **D** and **E**. These observations could reasonably be due to experimental artefacts such as contamination with other proteases such as cathepsins. 
+It should be noted that the studies comprising this data set did observe some sites with other residues in this position, though they were deliberately excluded from the compiled data set as there is insufficient experimental evidence for cleavage at sites other than **D** and **E**. These observations could reasonably be due to experimental artefacts such as contamination with other proteases (ie. cathepsins)
 
-Regardless, the observed results diverge greatly from the traditional dogma of DEVD cleavage sites for caspases that would lie at P7-P10 in Figure \@ref(fig:consensus-fig). Site chemistry also follows no discernible pattern, nor does a hydrophobicity scale of human Caspase-1 sites, the largest sample in the data set (Figure  \@ref(fig:characteristics-fig)).
+Regardless, the observed results diverge greatly from the traditional dogma of DEVD cleavage sites for caspases that would lie at P7-P10 in Figure \@ref(fig:consensus-fig). Site chemistry also follows no overwhelming pattern, nor does a hydrophobicity scale of human Caspase-1 and Caspase 4 substrates (Figure  \@ref(fig:characteristics-fig)).
 
-``` {r characteristics-fig, out.width = "60%", fig.cap = "(ref:generic-h-fig)"}
+``` {r characteristics-fig, fig.width = 6, out.width = "70%", fig.cap = "(ref:generic-h-fig)"}
 
 #Present human caspase 1 by hydrophobicity.
-ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob", col_scheme = "hydrophobicity")
+casp1Hhc <- ggseqlogo(casp1H_data$sequence, seq_type = "aa", method = "prob", col_scheme = "hydrophobicity")
+casp4hc <- ggseqlogo(casp4_data$sequence, seq_type = "aa", method = "prob", col_scheme = "hydrophobicity")
+
+casp1Hhc + casp4hc +
+  plot_annotation(tag_levels = "A")
+
+
 
 ```
 
 
-Rationally, there is a factor other than local primary sequence chemistry explaining the identification of cleavage sites by inflammatory caspases, such as higher-order protein structure of post-translational modification.
+Rationally, there is a factor other than identity of local primary sequence chemistry explaining the identification of cleavage sites by inflammatory caspases, such as higher-order patterns within primary sequence, secondary and tertiary structure, or post-translational modification.
 
-Visualisation of the consistency of substrate P4-P1 residues between model species (Figure \@ref(fig:species-fig)) shows a high degree of conservation. 
+Visualisation of the consistency of substrate P4-P1 residues between model species does (Figure \@ref(fig:species-fig)) shows a high degree of conservation. 
 
-This suggests that the amino acid residues surrounding the cleavage site are important, despite the general inconsistency of their chemistry (Figure \@ref(fig:consensus-fig)). Post-translational modifications are therefore an ideal candidate for investigation.
-
-
+This suggests that the amino acid residues surrounding the cleavage site are important, despite the general inconsistency of their chemistry (Figure \@ref(fig:consensus-fig)). Post-translational modifications present an interesting candidate for investigation alongside patterns within primary sequence, which will be followed through machine learning methods.
+ 
 ``` {r species-fig, fig.cap = "(ref:species-figure)"}
 
 #Custom function to generate stacked bar charts representing sequence conservation.
@@ -200,7 +210,7 @@ casp1H_count + casp1M_count +
 
 <!-- Figure references for phosphate segment -->
 
-(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst a sample of `r substrates_in_deepphos` human inflammatory Caspase substrates. Position 10 is the cleavage site (D/E) A) Plot of prevelance of possible phosphorylated residues within the data set. B) Evaluation of the strength of mean phosphate prediction scores for each position. Error bars show the standard error of the mean.
+(ref:frequency-figure) Representations of phosphorylation prediction results (score threshold `r phosphate_threshold`) amongst human inflammatory Caspase substrates. Position 10 is the cleavage site (D/E). A) Prevelance of predicted phosphorylation sites for `r casp1H_num` human Caspase 1 substrates. A) Prevelance of predicted phosphorylation sites for `r casp4_num` Caspase 4 substrates. C, D) Evaluation of the strength of mean phosphate prediction scores for each position. Error bars show the standard error of the mean. C) `r casp1H_num` human Caspase 1 substrates. D) `r casp4_num` Caspase 4 substrates. 
 
 <!-- End references section -->
 
@@ -215,53 +225,69 @@ warnings.filterwarnings('ignore')
 from deepphos import predict
 
 #Run deepphos predictions
-predict.predict_for_deepphos('./data/processed/all_potential_ST.csv', "ST")
-predict.predict_for_deepphos('./data/processed/all_potential_Y.csv', "Y")
+predict.predict_for_deepphos('./data/processed/Caspase1/all_potential_ST.csv', "ST", folder= "Caspase1")
+predict.predict_for_deepphos('./data/processed/Caspase1/all_potential_Y.csv', "Y", folder= "Caspase1")
+
+predict.predict_for_deepphos('./data/processed/Caspase4/all_potential_ST.csv', "ST", folder= "Caspase4")
+predict.predict_for_deepphos('./data/processed/Caspase4/all_potential_Y.csv', "Y", folder= "Caspase4")
 
 ```
 
 ```{r phosphate-calculations}
 
 #Read in generated data 
-fileST <- "./data/processed/general_ST_prediction_phosphorylation.txt"
-fileY <- "./data/processed/general_Y_prediction_phosphorylation.txt"
+fileST_1 <- "./data/processed/Caspase1/general_ST_prediction_phosphorylation.txt"
+fileY_1 <- "./data/processed/Caspase1/general_Y_prediction_phosphorylation.txt"
+fileST_4 <- "./data/processed/Caspase4/general_ST_prediction_phosphorylation.txt"
+fileY_4 <- "./data/processed/Caspase4/general_Y_prediction_phosphorylation.txt"
 
 #ST and Y sets have to be separated for analysis, they can be put back together now.
 # Filter by score (0-1) cut off point. 0.5 is standard.
-processed_sites <- read.table(fileST) %>%
-  full_join(read.table(fileY)) %>%
+processed_sites_1 <- read.table(fileST_1) %>%
+  full_join(read.table(fileY_1)) %>%
+  setNames(c("Accession", "Pos", "Score")) %>%
+  filter(Score >= phosphate_threshold)
+
+processed_sites_4 <- read.table(fileST_4) %>%
+  full_join(read.table(fileY_4)) %>%
   setNames(c("Accession", "Pos", "Score")) %>%
   filter(Score >= phosphate_threshold)
 
 #Count sequence positions that have a phosphorylable residue with score > cutoff.
 # Obtain his number as a proportion of total substrates.
 # This will be put in a bar chart to show the % of sites in that position that are phosphorylated
-site_frequency <- processed_sites %>% 
+site_frequency_1 <- processed_sites_1 %>% 
   select(Pos) %>%
   count() %>%
-  mutate(proportion = freq / substrates_in_deepphos)
+  mutate(proportion = freq / casp1H_num)
+
+site_frequency_4 <- processed_sites_4 %>% 
+  select(Pos) %>%
+  count() %>%
+  mutate(proportion = freq / casp4_num)
+
 
 #Get average scores to make a chart comparing phosphorylation strength in each position.
 # Also get standard error by anonymous function as it's only done once. 
-weighted_scores <- processed_sites %>% 
+weighted_scores_1 <- processed_sites_1 %>% 
   aggregate(Score ~ Pos, ., mean)
-weighted_scores$se <- aggregate(Score ~ Pos, processed_sites, function(x) sd(x) /sqrt(length(x)))[2]
+weighted_scores_1$se <- aggregate(Score ~ Pos, processed_sites_1, function(x) sd(x) /sqrt(length(x)))[2]
 
-#Numbers for inline code
-mean_frequency <- site_frequency$proportion %>% mean() %>% round(3)
-max_frequency <- site_frequency$proportion %>% max() %>% round(3)
-max_position <- site_frequency[site_frequency$proportion == max(site_frequency$proportion),]$Pos
-freq_sd <- site_frequency$proportion %>% sd() %>% round(3)
+weighted_scores_4 <- processed_sites_4 %>% 
+  aggregate(Score ~ Pos, ., mean)
+weighted_scores_4$se <- aggregate(Score ~ Pos, processed_sites_4, function(x) sd(x) /sqrt(length(x)))[2]
+
 ```
 
 Data was tidied into an amenable format for analysis with a modified version of phosphate site prediction model, DeepPhos, which was assesed to be capable of identification of previously unknown phosphate sites [@luo_2019]. `r substrates_in_deepphos` human inflammatory Caspase substrates were processed using the DeepPhos prediction model against a threshold score of **`r phosphate_threshold`** (measured between 0 and 1). Results were categorised by position in the sequence and represented in Figure \@ref(fig:frequency-fig).
 
-Position 10 represents the cleavage site (**D**/**E**), explaining the lack of any predicted phosphorylation sites at this position. An unexpectedly high number proportion of positions had prevalent phosphorylation, at a mean prevalence of `r mean_frequency` (n = `r substrates_in_deepphos`, s.d. `r freq_sd`), the greatest of which was position `r max_position` with a predicted phosphorylation frequency of `r max_frequency`.
+Position 10 represents the cleavage site (**D**/**E**), explaining the lack of any predicted phosphorylation sites at this position. 
 
-```{r frequency-fig, fig.width = 6, fig.height = 2, fig.cap = "(ref:frequency-figure)"}
+
+```{r frequency-fig, fig.width = 6, fig.cap = "(ref:frequency-figure)"}
 
 #Draw frequency bar plot. expand makes the bars start on the X axis.
-frequency_graph <- ggplot(site_frequency, aes(x = Pos, y = proportion)) +
+frequency_graph_1 <- ggplot(site_frequency_1, aes(x = Pos, y = proportion)) +
   geom_bar(stat = "identity", fill="#85ca5d", color = "black") +
   theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
@@ -270,8 +296,28 @@ frequency_graph <- ggplot(site_frequency, aes(x = Pos, y = proportion)) +
   scale_x_continuous(breaks = seq(1, 20, by = 1)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 0.4))
 
+frequency_graph_4 <- ggplot(site_frequency_4, aes(x = Pos, y = proportion)) +
+  geom_bar(stat = "identity", fill="#E0BBE4", color = "black") +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  xlab("Position") +
+  ylab("Proportion") +
+  scale_x_continuous(breaks = seq(1, 20, by = 1)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 0.4))
+
 #Draw mean score evaluation bar plot.
-score_graph <- ggplot(weighted_scores, aes(x = Pos, y = Score)) +
+score_graph_1 <- ggplot(weighted_scores_1, aes(x = Pos, y = Score)) +
+  geom_bar(stat = "identity", fill="#85ca5d", color = "black") +
+  geom_errorbar(aes(ymin = Score - se$Score, ymax = Score + se$Score), width=.2,
+                 position=position_dodge(.9)) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  xlab("Position") +
+  ylab("Mean Score") +
+  scale_x_continuous(breaks = seq(1, 20, by = 1)) +
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 1, by = 0.2), limits = c(0, 1))
+
+score_graph_4 <- ggplot(weighted_scores_4, aes(x = Pos, y = Score)) +
   geom_bar(stat = "identity", fill="#E0BBE4", color = "black") +
   geom_errorbar(aes(ymin = Score - se$Score, ymax = Score + se$Score), width=.2,
                  position=position_dodge(.9)) +
@@ -283,8 +329,11 @@ score_graph <- ggplot(weighted_scores, aes(x = Pos, y = Score)) +
   scale_y_continuous(expand = c(0, 0), breaks = seq(0, 1, by = 0.2), limits = c(0, 1))
 
 #Attach the graphs together horizontally using patchwork. Annotate them A and B to match the caption. 
-frequency_graph + score_graph +
+
+((frequency_graph_1 + frequency_graph_4) / (score_graph_1 + score_graph_4)) / guide_area() +
   plot_annotation(tag_levels = "A")
+
+
 ```
 
 Figure \@ref(fig:frequency-fig) also contains a representation of relative strengths of potential phosphorylation sites between positions. Standard errors of the mean were calculated and depicted in error bars as an indication of the accuracy of computation of the mean. Overlapping standard error bars suggest that differences in strength between sites is either not, or minimally, statistically significant (though statistical testing beyond visualization would be required to evaluate this). 
@@ -317,7 +366,7 @@ dummy_format <- sequence_table %>%
 
 #Carry out the tnse algorithm
 tsne <- dummy_format %>% 
-  Rtsne(perplexity = 5, check_duplicates = FALSE)
+  Rtsne(perplexity = 5, check_duplicates = FALSE, varbose = T)
 
 #Plot tsne results. The graph is different every time because it is stochastic but results always look similar.
 tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>% 
@@ -326,6 +375,7 @@ tsne_graph <- data.frame(tsne$Y, type = dummy_format$cleaved_by) %>%
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
     scale_colour_manual(name = "Caspase", values = c("#00afbb", "#e7b800", "#fc4e07")) +
     geom_point(size=1)
+
 
 tsne_graph
 ```
